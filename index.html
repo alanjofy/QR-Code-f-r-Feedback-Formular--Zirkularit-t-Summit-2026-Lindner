@@ -34,7 +34,7 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .view{display:none;}
 .view.active{display:block;}
 
-/* ══ ADMIN HOME ══ */
+/* ══ ADMIN HOME — full layout ══ */
 #view-admin-home{background:var(--forest);min-height:100vh;}
 .ah-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid rgba(110,158,116,.15);}
 .ah-brand{display:flex;align-items:center;gap:10px;}
@@ -47,16 +47,11 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .btn-nav-ghost:hover{background:rgba(110,158,116,.2);}
 .btn-nav-solid{background:var(--moss);border:1px solid var(--moss);color:#fff;}
 .btn-nav-solid:hover{background:var(--pine);}
-.ah-body{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 65px);}
-.qr-panel{padding:52px 48px;border-right:1px solid rgba(110,158,116,.12);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
-.qr-panel::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(110,158,116,.07);}
-.qr-panel::after{content:'';position:absolute;bottom:-60px;left:-40px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(110,158,116,.05);}
 .qr-eyebrow{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
 .qr-eyebrow::before{content:'';width:20px;height:1px;background:var(--sage);opacity:.5;}
-.qr-title{font-family:var(--fd);font-size:clamp(26px,3.2vw,40px);font-weight:400;line-height:1.1;color:#fff;margin-bottom:10px;}
+.qr-title{font-family:var(--fd);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.08;color:#fff;margin-bottom:12px;}
 .qr-title em{font-style:italic;color:var(--sage);}
-.qr-sub{font-size:12px;font-weight:300;line-height:1.85;color:rgba(200,220,202,.5);margin-bottom:32px;max-width:340px;}
-.qr-box-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px;position:relative;z-index:1;}
+.qr-sub{font-size:12px;font-weight:300;line-height:1.85;color:rgba(200,220,202,.5);margin-bottom:24px;max-width:380px;}
 .qr-frame{background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 40px rgba(0,0,0,.28);display:inline-block;position:relative;}
 .qr-frame-badge{position:absolute;top:-10px;right:-10px;background:var(--forest);border:2px solid rgba(110,158,116,.35);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;}
 #qr-code-el{width:160px;height:160px;}
@@ -64,31 +59,88 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .qr-url-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
 .qr-url-chip button{flex-shrink:0;background:rgba(110,158,116,.22);border:none;color:var(--sage);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:5px;cursor:pointer;font-family:var(--fs);transition:background .2s;}
 .qr-url-chip button:hover{background:rgba(110,158,116,.38);}
-.qr-steps{margin-top:28px;display:flex;flex-direction:column;gap:10px;}
+.qr-steps{display:flex;flex-direction:column;gap:10px;}
 .qs{display:flex;align-items:flex-start;gap:12px;font-size:11px;font-weight:300;color:rgba(200,220,202,.5);line-height:1.6;}
 .qs-n{width:22px;height:22px;border-radius:50%;border:1px solid rgba(110,158,116,.25);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--sage);flex-shrink:0;margin-top:1px;}
-.admin-panel{padding:40px 36px;background:rgba(0,0,0,.12);overflow-y:auto;}
-.ap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
-.ap-title{font-family:var(--fd);font-size:20px;font-weight:400;font-style:italic;color:rgba(232,240,232,.75);}
-.btn-full-admin{font-family:var(--fs);font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:var(--moss);border:none;color:#fff;padding:9px 18px;border-radius:8px;cursor:pointer;transition:background .2s;}
-.btn-full-admin:hover{background:var(--pine);}
-.kpi-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:20px;}
-.kpi-m{background:rgba(255,255,255,.05);border:1px solid rgba(110,158,116,.12);border-radius:var(--r);padding:14px 12px;}
-.kpi-m-l{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(163,196,168,.55);margin-bottom:6px;}
-.kpi-m-v{font-family:var(--fd);font-size:26px;color:#fff;line-height:1;}
-.kpi-m-s{font-size:10px;color:rgba(163,196,168,.4);margin-top:3px;}
-.live-bar-list{display:flex;flex-direction:column;gap:10px;}
-.lb-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;}
-.lb-name{font-size:11px;color:rgba(200,220,202,.6);}
-.lb-score{font-family:var(--fd);font-size:14px;color:rgba(200,220,202,.9);}
-.lb-track{height:4px;background:rgba(255,255,255,.06);border-radius:2px;}
-.lb-fill{height:4px;border-radius:2px;transition:width .7s cubic-bezier(.4,0,.2,1);}
-.ah-empty-state{text-align:center;padding:28px 16px;font-family:var(--fd);font-style:italic;font-size:13px;color:rgba(163,196,168,.35);}
-.db-status{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.1em;padding:5px 12px;border-radius:20px;margin-bottom:14px;}
-.db-status.ok{background:rgba(110,158,116,.15);color:var(--sage);border:1px solid rgba(110,158,116,.2);}
-.db-status.err{background:rgba(155,107,74,.15);color:#c4927a;border:1px solid rgba(155,107,74,.2);}
-.db-status.loading{background:rgba(255,255,255,.06);color:rgba(200,220,202,.4);border:1px solid rgba(255,255,255,.08);}
-.db-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
+.home-full{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 65px);}
+.home-left{padding:60px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+.home-right{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:rgba(0,0,0,.08);border-left:1px solid rgba(110,158,116,.1);}
+.home-right::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(110,158,116,.07);top:50%;left:50%;transform:translate(-50%,-50%);}
+.home-right::after{content:'';position:absolute;width:340px;height:340px;border-radius:50%;border:1px solid rgba(110,158,116,.1);top:50%;left:50%;transform:translate(-50%,-50%);}
+.home-qr-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;position:relative;z-index:1;}
+.home-qr-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(110,158,116,.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.home-qr-frame{padding:22px !important;border-radius:20px !important;box-shadow:0 12px 60px rgba(0,0,0,.35) !important;}
+.home-qr-frame #qr-code-el{width:220px !important;height:220px !important;}
+.home-qr-hint{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(163,196,168,.45);}
+.home-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;}
+.home-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.05);border:1px solid rgba(110,158,116,.18);border-radius:20px;padding:6px 14px;font-size:11px;color:rgba(200,220,202,.6);}
+.home-pill-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+@media(max-width:700px){
+  .home-full{grid-template-columns:1fr;}
+  .home-right{display:none;}
+  .home-left{padding:36px 24px;}
+}
+.home-left{
+  padding:60px 56px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:1;
+}
+.home-right{
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:rgba(0,0,0,.08);
+  border-left:1px solid rgba(110,158,116,.1);
+}
+.home-right::before{
+  content:'';position:absolute;
+  width:500px;height:500px;border-radius:50%;
+  border:1px solid rgba(110,158,116,.07);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.home-right::after{
+  content:'';position:absolute;
+  width:340px;height:340px;border-radius:50%;
+  border:1px solid rgba(110,158,116,.1);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.home-qr-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  gap:20px;position:relative;z-index:1;
+}
+.home-qr-glow{
+  position:absolute;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(110,158,116,.15) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.home-qr-frame{
+  padding:22px !important;
+  border-radius:20px !important;
+  box-shadow:0 12px 60px rgba(0,0,0,.35) !important;
+}
+.home-qr-frame #qr-code-el{width:220px !important;height:220px !important;}
+.home-qr-hint{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(163,196,168,.45);
+}
+.home-pills{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;
+}
+.home-pill{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(110,158,116,.18);
+  border-radius:20px;padding:6px 14px;
+  font-size:11px;color:rgba(200,220,202,.6);
+}
+.home-pill-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+
+@media(max-width:700px){
+  .home-full{grid-template-columns:1fr;}
+  .home-right{display:none;}
+  .home-left{padding:36px 24px;}
+}
 
 /* ══ ADMIN LOGIN ══ */
 #view-admin-login{background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
@@ -287,13 +339,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes expand{from{width:0}to{width:48px}}
 
-@media(max-width:700px){
-  .ah-body{grid-template-columns:1fr;}
-  .qr-panel{padding:36px 24px;}
-  .admin-panel{display:none;}
-  .kpi-row{grid-template-columns:repeat(2,1fr);}
-  .stat-grid{grid-template-columns:1fr;}
-}
+
 </style>
 </head>
 <body>
@@ -306,48 +352,53 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
       <span class="ah-brand-text"><strong>Zirkularität</strong> Summit 2026 — Lindner</span>
     </div>
     <div class="ah-nav-right">
-      <button class="btn-nav btn-nav-ghost" onclick="sv('view-admin-login')">Admin Login</button>
-      <button class="btn-nav btn-nav-solid" onclick="sv('view-admin-dash');loadAndRender()">Dashboard →</button>
+      <button class="btn-nav btn-nav-solid" onclick="sv('view-admin-login')">Admin Login</button>
     </div>
   </div>
-  <div class="ah-body">
-    <div class="qr-panel">
+
+  <div class="home-full">
+
+    <!-- Left: text + steps -->
+    <div class="home-left">
       <div class="qr-eyebrow">Teilnehmer · Zugang</div>
       <h2 class="qr-title">QR-Code für<br><em>Feedback-Formular</em></h2>
-      <p class="qr-sub">Zeigen Sie diesen Code am Ende des Summits. Teilnehmer gelangen direkt zur Begrüßungsseite.</p>
-      <div class="qr-box-wrap">
-        <div class="qr-frame">
-          <div class="qr-frame-badge">🌿</div>
-          <div id="qr-code-el"></div>
-        </div>
-        <div class="qr-url-chip">
-          <span id="qr-url-text">Wird geladen…</span>
-          <button onclick="copyLink(event)">Kopieren</button>
-        </div>
+      <p class="qr-sub">Zeigen Sie diesen Code am Ende des Summits. Teilnehmer gelangen direkt zur Begrüßungsseite und dem Fragebogen.</p>
+
+      <div class="qr-url-chip" style="margin-bottom:32px">
+        <span id="qr-url-text">Wird geladen…</span>
+        <button onclick="copyLink(event)">Kopieren</button>
       </div>
+
       <div class="qr-steps">
         <div class="qs"><div class="qs-n">1</div><span>Teilnehmer scannt den QR-Code mit dem Smartphone</span></div>
         <div class="qs"><div class="qs-n">2</div><span>Begrüßungsseite öffnet sich automatisch</span></div>
         <div class="qs"><div class="qs-n">3</div><span>Fragebogen ausfüllen &amp; anonym absenden</span></div>
         <div class="qs"><div class="qs-n">4</div><span>Ergebnisse werden in der Datenbank gespeichert</span></div>
       </div>
-    </div>
-    <div class="admin-panel">
-      <div class="ap-header">
-        <span class="ap-title">Live-Ergebnisse</span>
-        <button class="btn-full-admin" onclick="sv('view-admin-dash');loadAndRender()">Vollansicht →</button>
+
+      <!-- Area pills -->
+      <div class="home-pills">
+        <div class="home-pill"><span class="home-pill-dot" style="background:#537a58"></span>Wirtschaftlichkeit</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#6b9450"></span>Ökologie</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#9b6b4a"></span>Image</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#c49a3c"></span>Technische Umsetzung</div>
       </div>
-      <div id="home-db-status" class="db-status loading"><span class="db-dot"></span>Verbinde mit Datenbank…</div>
-      <div class="kpi-mini">
-        <div class="kpi-m"><div class="kpi-m-l">Teilnehmer</div><div class="kpi-m-v" id="home-n">—</div><div class="kpi-m-s">Eingegangen</div></div>
-        <div class="kpi-m"><div class="kpi-m-l">Ø Gesamt</div><div class="kpi-m-v" id="home-avg">—</div><div class="kpi-m-s">von 10</div></div>
-      </div>
-      <div id="home-empty" class="ah-empty-state" style="display:none">Noch keine Antworten eingegangen.</div>
-      <div id="home-bars" class="live-bar-list" style="display:none"></div>
     </div>
+
+    <!-- Right: big QR -->
+    <div class="home-right">
+      <div class="home-qr-wrap">
+        <div class="home-qr-glow"></div>
+        <div class="qr-frame home-qr-frame">
+          <div class="qr-frame-badge">🌿</div>
+          <div id="qr-code-el"></div>
+        </div>
+        <p class="home-qr-hint">Mit Smartphone scannen</p>
+      </div>
+    </div>
+
   </div>
 </div>
-
 <!-- ══════════════ ADMIN LOGIN ══════════════ -->
 <div id="view-admin-login" class="view">
   <div style="min-height:100vh;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:40px 20px">
@@ -364,6 +415,9 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
       </div>
       <div id="pw-err" class="l-err">Falsches Passwort — bitte erneut versuchen.</div>
       <button class="btn-login" onclick="login()">Einloggen</button>
+      <div id="login-dash-btn" style="display:none;margin-top:12px">
+        <button onclick="sv('view-admin-dash');loadAndRender()" style="width:100%;background:var(--moss);color:#fff;border:none;border-radius:var(--r);padding:12px;font-family:var(--fs);font-size:12px;font-weight:500;letter-spacing:.12em;cursor:pointer;transition:background .2s;">Dashboard öffnen →</button>
+      </div>
       <a class="l-back" onclick="sv('view-admin-home')">← Zurück zur Übersicht</a>
     </div>
   </div>
@@ -638,6 +692,7 @@ function login(){
   document.getElementById('pw-err').style.display='none';
   if(pw===ADMIN_PW){
     document.getElementById('pw').value='';
+    document.getElementById('login-dash-btn').style.display='block';
     sv('view-admin-dash');loadAndRender();
   } else document.getElementById('pw-err').style.display='block';
 }
@@ -659,15 +714,12 @@ function parseRows(rows){
 }
 
 async function loadAndRender(){
-  const statusEl=document.getElementById('home-db-status');
   try {
     const rows=await dbFetch();
     const R=parseRows(rows);
-    if(statusEl){statusEl.className='db-status ok';statusEl.innerHTML='<span class="db-dot"></span>Datenbank verbunden';}
     renderAll(R);
     renderHome(R);
   } catch(err){
-    if(statusEl){statusEl.className='db-status err';statusEl.innerHTML='<span class="db-dot"></span>Datenbank nicht erreichbar';}
     console.error('DB error',err);
   }
 }
@@ -676,16 +728,7 @@ const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
 
 function renderHome(R){
   window._lastR=R;
-  const n=R.length;
-  document.getElementById('home-n').textContent=n||'0';
-  if(!n){document.getElementById('home-avg').textContent='—';document.getElementById('home-empty').style.display='block';document.getElementById('home-bars').style.display='none';return;}
-  const avgs=S.map((_,i)=>Math.round(avg(R.map(r=>r.scores[i]))*10)/10);
-  document.getElementById('home-avg').textContent=Math.round(avg(avgs)*10)/10;
-  document.getElementById('home-empty').style.display='none';
-  document.getElementById('home-bars').style.display='flex';
-  document.getElementById('home-bars').innerHTML=S.map((s,i)=>`
-    <div><div class="lb-meta"><span class="lb-name">${s.l}</span><span class="lb-score">${avgs[i].toFixed(1)}</span></div>
-    <div class="lb-track"><div class="lb-fill" style="width:${avgs[i]/10*100}%;background:${s.c}"></div></div></div>`).join('');
+  // home panel elements removed — stats only shown in full dashboard
 }
 
 function renderAll(R){
@@ -702,549 +745,4 @@ function renderAll(R){
   const avgs=S.map((_,i)=>Math.round(avg(R.map(r=>r.scores[i]))*10)/10);
   const ov=Math.round(avg(avgs)*10)/10;
   document.getElementById('ka').textContent=ov.toFixed(1);
-  const ti=avgs.indexOf(Math.max(...avgs)),bi=avgs.indexOf(Math.min(...avgs));
-  document.getElementById('kt').textContent=S[ti].l;document.getElementById('ktv').textContent='Ø '+avgs[ti].toFixed(1);
-  document.getElementById('kb').textContent=S[bi].l;document.getElementById('kbv').textContent='Ø '+avgs[bi].toFixed(1);
-  rScores(avgs,n,R);rAntworten(n,R);rAuswertung(avgs,n);rStatistik(avgs,n,R);
-}
-
-function rScores(avgs,n,R){
-  let h='';
-  S.forEach((s,i)=>{const pct=Math.round(avgs[i]/10*100),vals=R.map(r=>r.scores[i]);
-    h+=`<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div><div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);margin-bottom:3px">0${i+1} · ${s.s}</div><div class="rc-title">${s.l}</div><div class="rc-sub">${n} Stimmen · Min ${Math.min(...vals)} · Max ${Math.max(...vals)}</div></div><div style="text-align:right"><div class="rc-num" style="color:${s.c}">${avgs[i].toFixed(1)}</div><div class="rc-numl">Ø von 10</div></div></div><div class="rc-bar"><div class="rc-track"><div class="rc-fill" style="width:${pct}%;background:${s.c}"></div></div><div class="rc-scale"><span>1</span><span>5</span><span>10</span></div></div></div>`;});
-  document.getElementById('sh').innerHTML=h;
-}
-function rAntworten(n,R){
-  let h='';
-  S.forEach((s,i)=>{
-    h+=`<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div class="rc-title">${s.l}</div><div style="font-size:11px;color:var(--t3)">${n} Antworten</div></div><div class="rc-list">`;
-    R.forEach((r,ri)=>{
-      h+=`<div class="rc-item rc-item-wrap">
-        <div class="ri-n">0${ri+1}</div>
-        <div>
-          <div class="ri-text">${r.texts[i]}</div>
-          <div class="ri-meta">Score ${r.scores[i]}/10 · ${r.ts}</div>
-        </div>
-        <button class="btn-del-row" onclick="confirmDeleteOne(${r.id},${ri+1})">Löschen</button>
-      </div>`;
-    });
-    h+=`</div></div>`;
-  });
-  document.getElementById('ah').innerHTML=h;
-}
-function interp(l,a,n){
-  if(a>=8)return`<em>${l}</em> erzielt mit ${a.toFixed(1)} einen starken Durchschnitt über ${n} Stimmen. Dieser Bereich kann offensiv kommuniziert werden.`;
-  if(a>=6)return`<em>${l}</em> wird mit ${a.toFixed(1)} solide bewertet. Gezielte Maßnahmen können diesen Bereich zur klaren Stärke entwickeln.`;
-  if(a>=4)return`<em>${l}</em> zeigt mit ${a.toFixed(1)} ein gemischtes Bild. Die qualitativen Antworten enthalten konkrete Hinweise auf Hindernisse.`;
-  return`<em>${l}</em> signalisiert mit ${a.toFixed(1)} dringenden Handlungsbedarf. Kommentare sollten systematisch ausgewertet werden.`;
-}
-function rAuswertung(avgs,n){
-  let h='';
-  S.forEach((s,i)=>{h+=`<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div class="rc-title">${s.l}</div><div class="rc-num" style="color:${s.c}">${avgs[i].toFixed(1)}</div></div><div class="rc-interp"><div class="ri-badge">Interpretation</div><div class="ri-body">${interp(s.l,avgs[i],n)}</div></div></div>`;});
-  const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
-  const ov=avg(avgs);const sent=ov>=7?'sehr positiv':ov>=5?'überwiegend positiv':'gemischt';
-  h+=`<div class="cbox"><div class="cbox-eyebrow">Gesamtfazit · Nachhaltiges Bauen</div><div class="cbox-h">Summit 2026 — Ergebnis</div><div class="cbox-p">Die ${n} Teilnehmer bewerten Zirkularität insgesamt ${sent} (Ø ${ov.toFixed(1)}/10). Stärkstes Handlungsfeld: <em>${S[sorted[0].i].l}</em>. Höchster Handlungsbedarf: <em>${S[sorted[sorted.length-1].i].l}</em>.</div><div class="cbox-grid">${sorted.map((x,r)=>`<div class="cg-cell"><div class="cg-l">${['Stärke','Potenzial','Aufmerksamkeit','Priorität'][r]}</div><div class="cg-v">${S[x.i].l}</div><div class="cg-s">Ø ${x.a.toFixed(1)} / 10</div></div>`).join('')}</div></div>`;
-  document.getElementById('uh').innerHTML=h;
-}
-function rStatistik(avgs,n,R){
-  document.getElementById('stat-empty').style.display='none';
-  document.getElementById('stat-content').style.display='block';
-  document.getElementById('dc-tot').textContent=avg(avgs).toFixed(1);
-  const dc=document.getElementById('donut-canvas').getContext('2d');
-  const tot=avgs.reduce((a,b)=>a+b,0);dc.clearRect(0,0,200,200);
-  let ang=-Math.PI/2;
-  avgs.forEach((v,i)=>{const sl=(v/tot)*Math.PI*2;dc.beginPath();dc.moveTo(100,100);dc.arc(100,100,88,ang,ang+sl);dc.closePath();dc.fillStyle=S[i].c;dc.fill();ang+=sl;});
-  dc.beginPath();dc.arc(100,100,58,0,Math.PI*2);dc.fillStyle='#fff';dc.fill();
-  document.getElementById('donut-legend').innerHTML=S.map((s,i)=>`<div class="dl-row"><div class="dl-dot" style="background:${s.c}"></div><span class="dl-label">${s.l}</span><span class="dl-val">${avgs[i].toFixed(1)}</span></div>`).join('');
-  const rc=document.getElementById('radar-canvas').getContext('2d');rc.clearRect(0,0,240,220);
-  const rcx=120,rcy=112,maxR=80,lbs=['Wirtschaft','Ökologie','Image','Technik'];
-  const a4=[0,1,2,3].map(i=>-Math.PI/2+(i/4)*Math.PI*2);
-  [2,4,6,8,10].forEach(v=>{rc.beginPath();a4.forEach((a,i)=>{const r=(v/10)*maxR;i===0?rc.moveTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)):rc.lineTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a));});rc.closePath();rc.strokeStyle='rgba(28,26,22,.07)';rc.lineWidth=1;rc.stroke();rc.fillStyle='rgba(154,144,128,.6)';rc.font='9px Outfit,sans-serif';rc.textAlign='center';rc.fillText(v,rcx+3,rcy-(v/10)*maxR+3);});
-  a4.forEach(a=>{rc.beginPath();rc.moveTo(rcx,rcy);rc.lineTo(rcx+maxR*Math.cos(a),rcy+maxR*Math.sin(a));rc.strokeStyle='rgba(28,26,22,.08)';rc.lineWidth=1;rc.stroke();});
-  rc.beginPath();a4.forEach((a,i)=>{const r=(avgs[i]/10)*maxR;i===0?rc.moveTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)):rc.lineTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a));});rc.closePath();rc.fillStyle='rgba(83,122,88,.18)';rc.fill();rc.strokeStyle='#537a58';rc.lineWidth=2;rc.stroke();
-  a4.forEach((a,i)=>{const r=(avgs[i]/10)*maxR,x=rcx+r*Math.cos(a),y=rcy+r*Math.sin(a);rc.beginPath();rc.arc(x,y,4,0,Math.PI*2);rc.fillStyle=S[i].c;rc.fill();const lx=rcx+(maxR+18)*Math.cos(a),ly=rcy+(maxR+18)*Math.sin(a);rc.fillStyle='#5a5548';rc.font='10px Outfit,sans-serif';rc.textAlign=lx<rcx-5?'right':lx>rcx+5?'left':'center';rc.fillText(lbs[i],lx,ly+3);});
-  const hc=document.getElementById('hist-canvas'),ctx=hc.getContext('2d');
-  const dw=hc.offsetWidth||700;hc.width=dw*devicePixelRatio;hc.height=140*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);ctx.clearRect(0,0,dw,140);
-  const freq=Array(10).fill(0);R.forEach(r=>r.scores.forEach(s=>freq[s-1]++));
-  const mxF=Math.max(...freq,1),pad={l:28,r:12,t:10,b:28},cH=140-pad.t-pad.b,colW=(dw-pad.l-pad.r)/10,bw=colW*.65,gp=colW*.35;
-  for(let i=0;i<10;i++){const x=pad.l+i*colW+gp/2,bH=(freq[i]/mxF)*cH,y=pad.t+cH-bH;ctx.fillStyle='rgba(83,122,88,.72)';ctx.beginPath();const rr=3;ctx.moveTo(x+rr,y);ctx.lineTo(x+bw-rr,y);ctx.quadraticCurveTo(x+bw,y,x+bw,y+rr);ctx.lineTo(x+bw,y+bH);ctx.lineTo(x,y+bH);ctx.lineTo(x,y+rr);ctx.quadraticCurveTo(x,y,x+rr,y);ctx.closePath();ctx.fill();if(freq[i]>0){ctx.fillStyle='#537a58';ctx.font='500 10px Outfit,sans-serif';ctx.textAlign='center';ctx.fillText(freq[i],x+bw/2,y-4);}ctx.fillStyle='#9a9080';ctx.font='10px Outfit,sans-serif';ctx.textAlign='center';ctx.fillText(i+1,x+bw/2,140-pad.b+13);}
-  ctx.beginPath();ctx.moveTo(pad.l,pad.t+cH);ctx.lineTo(dw-pad.r,pad.t+cH);ctx.strokeStyle='rgba(28,26,22,.1)';ctx.lineWidth=1;ctx.stroke();
-  document.getElementById('spread-bars').innerHTML=S.map((s,i)=>{const vals=R.map(r=>r.scores[i]),mn=Math.min(...vals),mx=Math.max(...vals),av=avgs[i];return`<div class="spread-row"><div class="spread-meta"><span class="spread-name">${s.l}</span><span class="spread-nums">Min ${mn} · Ø ${av.toFixed(1)} · Max ${mx}</span></div><div class="spread-track"><div class="spread-range" style="left:${((mn-1)/9)*100}%;width:${((mx-mn)/9)*100}%;background:${s.c}"></div><div class="spread-avg-line" style="left:${((av-1)/9)*100}%;background:${s.c}"></div></div></div>`;}).join('');
-}
-
-
-/* ════════════════════════════════════════
-   INIT
-════════════════════════════════════════ */
-(function init(){
-  const p=new URLSearchParams(window.location.search);
-  if(p.get('view')==='survey'){
-    sv('view-welcome');
-  } else {
-    sv('view-admin-home');
-    initQR();
-    loadAndRender(); // auto-load stats on home page
-  }
-})();
-</script>
-
-<!-- ══════════════ CONFIRM MODAL ══════════════ -->
-<div id="confirm-overlay" style="display:none;position:fixed;inset:0;background:rgba(28,26,22,.55);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeConfirm()">
-  <div class="confirm-box">
-    <div class="confirm-icon">🗑</div>
-    <h3 class="confirm-h" id="confirm-h">Löschen?</h3>
-    <p class="confirm-p" id="confirm-p">Diese Aktion kann nicht rückgängig gemacht werden.</p>
-    <div class="confirm-btns">
-      <button class="btn-confirm-cancel" onclick="closeConfirm()">Abbrechen</button>
-      <button class="btn-confirm-delete" id="confirm-action-btn">Löschen</button>
-    </div>
-  </div>
-</div>
-
-<script>
-/* ════════════════════════════════════════
-   DELETE FUNCTIONS
-════════════════════════════════════════ */
-async function dbDelete(id){
-  const res=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?id=eq.${id}`,{
-    method:'DELETE',
-    headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}
-  });
-  if(!res.ok) throw new Error(await res.text());
-}
-
-async function dbDeleteAll(){
-  const res=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?id=gte.0`,{
-    method:'DELETE',
-    headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}
-  });
-  if(!res.ok) throw new Error(await res.text());
-}
-
-let _confirmCallback=null;
-
-function showConfirm(title, msg, callback){
-  document.getElementById('confirm-h').textContent=title;
-  document.getElementById('confirm-p').textContent=msg;
-  _confirmCallback=callback;
-  const ov=document.getElementById('confirm-overlay');
-  ov.style.display='flex';
-}
-
-function closeConfirm(){
-  document.getElementById('confirm-overlay').style.display='none';
-  _confirmCallback=null;
-}
-
-document.getElementById('confirm-action-btn').onclick=async function(){
-  if(_confirmCallback){
-    this.textContent='Wird gelöscht…';this.disabled=true;
-    try{ await _confirmCallback(); }
-    catch(e){ alert('Fehler: '+e.message); }
-    finally{ this.textContent='Löschen';this.disabled=false; }
-  }
-  closeConfirm();
-};
-
-function confirmDeleteAll(){
-  showConfirm(
-    'Alle Antworten löschen?',
-    'Alle gespeicherten Feedback-Einträge werden dauerhaft gelöscht. Ideal vor dem echten Event, um Testdaten zu entfernen.',
-    async()=>{ await dbDeleteAll(); await loadAndRender(); }
-  );
-}
-
-function confirmDeleteOne(id, num){
-  showConfirm(
-    `Eintrag #${num} löschen?`,
-    'Dieser einzelne Feedback-Eintrag wird dauerhaft aus der Datenbank entfernt.',
-    async()=>{ await dbDelete(id); await loadAndRender(); }
-  );
-}
-
-/* ════════════════════════════════════════
-   EXCEL EXPORT
-════════════════════════════════════════ */
-function exportExcel(){
-  if(!window._lastR || !window._lastR.length){ alert('Keine Daten zum Exportieren.'); return; }
-  const R=window._lastR;
-  const avgs=S.map((_,i)=>+(avg(R.map(r=>r.scores[i])).toFixed(1)));
-  const wb=XLSX.utils.book_new();
-
-  /* ── Sheet 1: Alle Antworten ── */
-  const headers=['#','Datum','Score Wirtschaftlichkeit','Score Ökologie','Score Image','Score Technik','Ø Score','Antwort Wirtschaftlichkeit','Antwort Ökologie','Antwort Image','Antwort Technik'];
-  const rows=R.map((r,i)=>[
-    i+1, r.ts,
-    r.scores[0],r.scores[1],r.scores[2],r.scores[3],
-    +(avg(r.scores).toFixed(1)),
-    r.texts[0],r.texts[1],r.texts[2],r.texts[3]
-  ]);
-  const ws1=XLSX.utils.aoa_to_sheet([headers,...rows]);
-
-  // Column widths
-  ws1['!cols']=[{wch:4},{wch:14},{wch:22},{wch:18},{wch:16},{wch:18},{wch:10},{wch:45},{wch:45},{wch:45},{wch:45}];
-
-  // Style header row — dark forest green bg, white text
-  const headerStyle={fill:{fgColor:{rgb:'2E4A2E'}},font:{color:{rgb:'FFFFFF'},bold:true,sz:11},alignment:{horizontal:'center',vertical:'center',wrapText:true}};
-  headers.forEach((_,ci)=>{
-    const cell=XLSX.utils.encode_cell({r:0,c:ci});
-    if(!ws1[cell]) ws1[cell]={v:headers[ci],t:'s'};
-    ws1[cell].s=headerStyle;
-  });
-
-  // Score cells — colour-coded by value
-  const scoreColors=['537A58','6B9450','9B6B4A','C49A3C'];
-  rows.forEach((row,ri)=>{
-    // score columns (cols 2-5)
-    [0,1,2,3].forEach(si=>{
-      const cell=XLSX.utils.encode_cell({r:ri+1,c:2+si});
-      const val=row[2+si];
-      const bg=val>=8?'D4EDD4':val>=6?'EAF3DE':val>=4?'FFF3CD':'FDDEDE';
-      if(ws1[cell]){ws1[cell].s={fill:{fgColor:{rgb:bg}},font:{bold:true,color:{rgb:scoreColors[si]}},alignment:{horizontal:'center'}};}
-    });
-    // avg score col
-    const avgCell=XLSX.utils.encode_cell({r:ri+1,c:6});
-    const avgVal=row[6];
-    const avgBg=avgVal>=8?'C8F0C8':avgVal>=6?'E0F0D0':avgVal>=4?'FFF0C0':'FFD0D0';
-    if(ws1[avgCell]){ws1[avgCell].s={fill:{fgColor:{rgb:avgBg}},font:{bold:true},alignment:{horizontal:'center'}};}
-    // zebra rows for text columns
-    const rowBg=ri%2===0?'FAFAF7':'F4F1EB';
-    [7,8,9,10].forEach(ci=>{
-      const cell=XLSX.utils.encode_cell({r:ri+1,c:ci});
-      if(ws1[cell]){ws1[cell].s={fill:{fgColor:{rgb:rowBg}},alignment:{wrapText:true,vertical:'top'}};}
-    });
-  });
-
-  ws1['!rows']=[{hpt:24},...rows.map(()=>({hpt:60}))];
-  XLSX.utils.book_append_sheet(wb,ws1,'Alle Antworten');
-
-  /* ── Sheet 2: Zusammenfassung ── */
-  const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
-  const summaryData=[
-    ['🌿 Zirkularität Summit 2026 — Lindner','','',''],
-    ['Auswertung Nachhaltiges Bauen','','',''],
-    ['','','',''],
-    ['Bereich','Ø Score','Bewertung','Rang'],
-    ...S.map((s,i)=>[s.l, avgs[i], avgs[i]>=8?'Stark':avgs[i]>=6?'Gut':avgs[i]>=4?'Mittel':'Schwach', sorted.findIndex(x=>x.i===i)+1]),
-    ['','','',''],
-    ['Gesamtdurchschnitt',+(avg(avgs).toFixed(1)),'',''],
-    ['Anzahl Teilnehmer',R.length,'',''],
-    ['Stärkster Bereich',S[sorted[0].i].l,'',''],
-    ['Handlungsbedarf',S[sorted[sorted.length-1].i].l,'',''],
-  ];
-  const ws2=XLSX.utils.aoa_to_sheet(summaryData);
-  ws2['!cols']=[{wch:26},{wch:14},{wch:16},{wch:8}];
-  // Title styling
-  ['A1','A2'].forEach((addr,ti)=>{
-    if(ws2[addr]) ws2[addr].s={font:{bold:true,sz:ti===0?14:11,color:{rgb:ti===0?'2E4A2E':'537A58'}},fill:{fgColor:{rgb:ti===0?'D4E6D4':'EEF4E8'}}};
-  });
-  // Header row (row 4)
-  ['A4','B4','C4','D4'].forEach(addr=>{
-    if(ws2[addr]) ws2[addr].s={fill:{fgColor:{rgb:'2E4A2E'}},font:{color:{rgb:'FFFFFF'},bold:true},alignment:{horizontal:'center'}};
-  });
-  // Section rows (rows 5-8)
-  S.forEach((_,i)=>{
-    const row=4+i+1;
-    const scoreAddr=`B${row}`;
-    const val=avgs[i];
-    const bg=val>=8?'D4EDD4':val>=6?'EAF3DE':val>=4?'FFF3CD':'FDDEDE';
-    if(ws2[scoreAddr]) ws2[scoreAddr].s={fill:{fgColor:{rgb:bg}},font:{bold:true,color:{rgb:scoreColors[i]}},alignment:{horizontal:'center'}};
-  });
-  XLSX.utils.book_append_sheet(wb,ws2,'Zusammenfassung');
-
-  /* ── Sheet 3: Scores je Bereich ── */
-  const scoreSheet=[
-    ['Teilnehmer','Wirtschaftlichkeit','Ökologie','Image','Technische Umsetzung','Durchschnitt'],
-    ...R.map((r,i)=>[`Teilnehmer ${i+1}`,...r.scores,+(avg(r.scores).toFixed(1))])
-  ];
-  const ws3=XLSX.utils.aoa_to_sheet(scoreSheet);
-  ws3['!cols']=[{wch:16},{wch:20},{wch:14},{wch:12},{wch:22},{wch:14}];
-  ['A1','B1','C1','D1','E1','F1'].forEach((addr,ci)=>{
-    if(ws3[addr]) ws3[addr].s={fill:{fgColor:{rgb:['2E4A2E','537A58','6B9450','9B6B4A','C49A3C','3D6142'][ci]}},font:{color:{rgb:'FFFFFF'},bold:true},alignment:{horizontal:'center'}};
-  });
-  XLSX.utils.book_append_sheet(wb,ws3,'Scores');
-
-  XLSX.writeFile(wb,`Zirkularitaet_Summit_2026_Feedback_${new Date().toISOString().slice(0,10)}.xlsx`);
-}
-
-/* ════════════════════════════════════════
-   PDF EXPORT
-════════════════════════════════════════ */
-function exportPDF(){
-  if(!window._lastR || !window._lastR.length){ alert('Keine Daten zum Exportieren.'); return; }
-  const R=window._lastR;
-  const {jsPDF}=window.jspdf;
-  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  const pw=210, ph=297;
-  const ml=18, mr=18, mt=0;
-  const cw=pw-ml-mr;
-  let y=0;
-
-  const C={forest:[46,74,46],pine:[61,97,66],moss:[83,122,88],fern:[110,158,116],sage:[163,196,168],mist:[212,230,214],cream:[244,241,235],bg:[250,246,238],white:[255,255,255],text:[28,26,22],t2:[90,85,72],t3:[154,144,128],clay:[155,107,74],amber:[196,154,60],red:[180,60,50],scores:[[83,122,88],[107,148,80],[155,107,74],[196,154,60]]};
-
-  function rgb(c){return{r:c[0],g:c[1],b:c[2]};}
-  function setFill(c){doc.setFillColor(c[0],c[1],c[2]);}
-  function setDraw(c){doc.setDrawColor(c[0],c[1],c[2]);}
-  function setTxt(c){doc.setTextColor(c[0],c[1],c[2]);}
-  function setFont(sz,style='normal',family='helvetica'){doc.setFont(family,style);doc.setFontSize(sz);}
-
-  const avgs=S.map((_,i)=>+( avg(R.map(r=>r.scores[i])).toFixed(1)));
-  const ovAvg=+(avg(avgs).toFixed(1));
-  const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
-  const today=new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
-
-  /* ── COVER PAGE ── */
-  // Dark forest header block
-  setFill(C.forest); doc.rect(0,0,pw,80,'F');
-  // Decorative circles
-  setFill([61,97,66]); doc.circle(180,10,40,'F');
-  setFill([46,74,46]); doc.circle(185,12,28,'F');
-  setFill([83,122,88]); doc.circle(30,75,20,'F');
-
-  // Leaf emoji text
-  setFont(28,'bold'); setTxt(C.sage);
-  doc.text('🌿',ml,28);
-  setFont(22,'bold'); setTxt(C.white);
-  doc.text('Zirkularität Summit 2026',ml+12,28);
-  setFont(13,'normal'); setTxt(C.sage);
-  doc.text('Lindner · Nachhaltiges Bauen',ml+12,36);
-
-  // Divider line
-  setDraw(C.moss); doc.setLineWidth(0.4);
-  doc.line(ml,42,pw-mr,42);
-
-  // Report title
-  setFont(10,'normal'); setTxt([163,196,168]);
-  doc.text('FEEDBACK-AUSWERTUNG',ml,52);
-  setFont(18,'bold'); setTxt(C.white);
-  doc.text('Analyse & Ergebnisbericht',ml,62);
-  setFont(9,'normal'); setTxt([163,196,168]);
-  doc.text(`Erstellt am ${today}  ·  ${R.length} Teilnehmer`,ml,71);
-
-  y=92;
-
-  // KPI cards row
-  const kpiW=(cw-9)/4;
-  const kpis=[
-    {label:'Teilnehmer',val:R.length,sub:'Antworten'},
-    {label:'Ø Gesamt',val:ovAvg,sub:'von 10'},
-    {label:'Stärke',val:S[sorted[0].i].l.split(' ')[0],sub:'Bester Bereich'},
-    {label:'Fokus',val:S[sorted[sorted.length-1].i].l.split(' ')[0],sub:'Handlungsbedarf'}
-  ];
-  kpis.forEach((k,i)=>{
-    const x=ml+i*(kpiW+3);
-    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.3);
-    doc.roundedRect(x,y,kpiW,22,2,2,'FD');
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(k.label.toUpperCase(),x+4,y+6);
-    setFont(typeof k.val==='number'?14:9,'bold'); setTxt(C.forest);
-    doc.text(String(k.val),x+4,y+15);
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(k.sub,x+4,y+20);
-  });
-  y+=30;
-
-  // Section scores
-  setFont(10,'bold'); setTxt(C.forest);
-  doc.text('BEWERTUNG JE BEREICH',ml,y); y+=6;
-
-  S.forEach((s,i)=>{
-    const scoreVal=avgs[i];
-    const barMax=cw-50;
-    const barFill=(scoreVal/10)*barMax;
-    const scoreCol=scoreVal>=8?[83,160,83]:scoreVal>=6?[107,148,80]:scoreVal>=4?[196,154,60]:[180,80,60];
-
-    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.2);
-    doc.roundedRect(ml,y,cw,14,2,2,'FD');
-
-    // Left colour accent
-    setFill(C.scores[i]); doc.roundedRect(ml,y,3,14,1,1,'F');
-
-    // Section name
-    setFont(8,'bold'); setTxt(C.text);
-    doc.text(s.l,ml+7,y+5.5);
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(s.s,ml+7,y+10);
-
-    // Bar background
-    const bx=ml+72, by=y+4, bh=5;
-    setFill([226,221,212]); doc.roundedRect(bx,by,barMax,bh,1,1,'F');
-
-    // Bar fill with gradient effect
-    setFill(scoreCol); doc.roundedRect(bx,by,barFill,bh,1,1,'F');
-
-    // Score badge
-    const badgeX=ml+cw-14;
-    setFill(scoreCol); doc.roundedRect(badgeX,y+3,12,8,2,2,'F');
-    setFont(9,'bold'); setTxt(C.white);
-    doc.text(scoreVal.toFixed(1),badgeX+6,y+8.5,'center');
-
-    y+=18;
-  });
-
-  y+=6;
-
-  // Overall score visual
-  setFill(C.forest); doc.roundedRect(ml,y,cw,24,3,3,'F');
-  setFont(8,'normal'); setTxt(C.sage);
-  doc.text('GESAMTDURCHSCHNITT',ml+8,y+8);
-  setFont(20,'bold'); setTxt(C.white);
-  doc.text(ovAvg.toFixed(1),ml+8,y+20);
-  setFont(9,'normal'); setTxt(C.sage);
-  doc.text('/ 10',ml+22,y+20);
-  const sent=ovAvg>=7?'Sehr positiv':ovAvg>=5?'Überwiegend positiv':'Gemischt';
-  setFont(8,'normal'); setTxt(C.mist);
-  doc.text(sent,ml+40,y+16);
-  const prog=(ovAvg/10)*(cw-60);
-  setFill([61,97,66]); doc.roundedRect(ml+40,y+19,cw-58,3,1,1,'F');
-  setFill(C.sage); doc.roundedRect(ml+40,y+19,prog,3,1,1,'F');
-  y+=32;
-
-  /* ── PAGE 2: DETAILANALYSE ── */
-  doc.addPage();
-  y=mt+14;
-
-  // Page header
-  setFill(C.forest); doc.rect(0,0,pw,14,'F');
-  setFont(8,'normal'); setTxt(C.sage);
-  doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
-  setTxt([163,196,168]);
-  doc.text('Detailanalyse',pw-mr,9,'right');
-  y=22;
-
-  setFont(13,'bold'); setTxt(C.forest);
-  doc.text('Detailanalyse je Bereich',ml,y); y+=10;
-
-  S.forEach((s,i)=>{
-    // Check page break
-    if(y>240){doc.addPage();y=22;setFill(C.forest);doc.rect(0,0,pw,14,'F');setFont(8,'normal');setTxt(C.sage);doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);y=22;}
-
-    // Section header
-    setFill(C.scores[i]); doc.roundedRect(ml,y,cw,10,2,2,'F');
-    setFont(9,'bold'); setTxt(C.white);
-    doc.text(`0${i+1}  ${s.l}`,ml+4,y+6.5);
-    const scoreVal=avgs[i];
-    doc.text(`Ø ${scoreVal.toFixed(1)} / 10`,ml+cw-4,y+6.5,'right');
-    y+=14;
-
-    // Score distribution for this section
-    const vals=R.map(r=>r.scores[i]);
-    const mn=Math.min(...vals),mx=Math.max(...vals);
-
-    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.2);
-    doc.roundedRect(ml,y,cw,8,1,1,'FD');
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(`Min: ${mn}`,ml+4,y+5);
-    doc.text(`Ø: ${scoreVal.toFixed(1)}`,ml+30,y+5);
-    doc.text(`Max: ${mx}`,ml+58,y+5);
-    doc.text(`${R.length} Stimmen`,ml+cw-4,y+5,'right');
-
-    // Mini score bar
-    const mbx=ml+85,mby=y+2.5,mbw=50,mbh=3;
-    setFill([226,221,212]); doc.roundedRect(mbx,mby,mbw,mbh,1,1,'F');
-    const scoreCol2=scoreVal>=8?[83,160,83]:scoreVal>=6?[107,148,80]:scoreVal>=4?[196,154,60]:[180,80,60];
-    setFill(scoreCol2); doc.roundedRect(mbx,mby,(scoreVal/10)*mbw,mbh,1,1,'F');
-    y+=12;
-
-    // Interpretation
-    const interpText=scoreVal>=8?`${s.l} erzielt mit ${scoreVal.toFixed(1)} einen starken Durchschnitt. Dieser Bereich kann offensiv kommuniziert werden.`:
-      scoreVal>=6?`${s.l} wird mit ${scoreVal.toFixed(1)} solide bewertet. Gezielte Maßnahmen können diesen Bereich zur Stärke entwickeln.`:
-      scoreVal>=4?`${s.l} zeigt mit ${scoreVal.toFixed(1)} ein gemischtes Bild. Die qualitativen Antworten enthalten konkrete Hinweise.`:
-      `${s.l} signalisiert mit ${scoreVal.toFixed(1)} Handlungsbedarf. Kommentare sollten systematisch ausgewertet werden.`;
-
-    setFont(7.5,'normal'); setTxt(C.t2);
-    const lines=doc.splitTextToSize(interpText,cw-4);
-    doc.text(lines,ml+2,y);
-    y+=lines.length*4.5+4;
-
-    // Responses
-    setFont(7.5,'bold'); setTxt(C.t3);
-    doc.text('TEILNEHMER-ANTWORTEN',ml,y); y+=4;
-
-    R.forEach((r,ri)=>{
-      if(y>265){doc.addPage();y=22;setFill(C.forest);doc.rect(0,0,pw,14,'F');setFont(8,'normal');setTxt(C.sage);doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);y=22;}
-      const scoreC=r.scores[i]>=8?[83,160,83]:r.scores[i]>=6?[107,148,80]:r.scores[i]>=4?[196,154,60]:[180,80,60];
-      const rowBg=ri%2===0?[250,248,244]:[244,241,235];
-      const txt=r.texts[i];
-      const wrappedLines=doc.splitTextToSize(txt,cw-28);
-      const rowH=Math.max(10,wrappedLines.length*4+6);
-      setFill(rowBg); setDraw(C.mist); doc.setLineWidth(0.1);
-      doc.roundedRect(ml,y,cw,rowH,1,1,'FD');
-      // Score badge
-      setFill(scoreC); doc.roundedRect(ml+1,y+1,10,rowH-2,1,1,'F');
-      setFont(7.5,'bold'); setTxt(C.white);
-      doc.text(String(r.scores[i]),ml+6,y+rowH/2+1,'center');
-      // Text
-      setFont(7,'normal'); setTxt(C.t2);
-      doc.text(wrappedLines,ml+14,y+4.5);
-      // Timestamp
-      setFont(6,'normal'); setTxt(C.t3);
-      doc.text(r.ts,ml+cw-2,y+rowH-2,'right');
-      y+=rowH+1;
-    });
-    y+=8;
-  });
-
-  /* ── PAGE 3: FAZIT ── */
-  doc.addPage();
-  setFill(C.forest); doc.rect(0,0,pw,14,'F');
-  setFont(8,'normal'); setTxt(C.sage);
-  doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
-  setTxt([163,196,168]);
-  doc.text('Gesamtfazit',pw-mr,9,'right');
-  y=24;
-
-  setFont(14,'bold'); setTxt(C.forest);
-  doc.text('Gesamtfazit — Nachhaltiges Bauen',ml,y); y+=5;
-  setFont(8,'normal'); setTxt(C.t3);
-  doc.text(`Zirkularität Summit 2026  ·  ${R.length} Teilnehmer  ·  ${today}`,ml,y); y+=12;
-
-  // Ranked sections
-  setFont(9,'bold'); setTxt(C.forest);
-  doc.text('BEREICHE NACH BEWERTUNG',ml,y); y+=7;
-
-  const rankLabels=['Stärke','Potenzial','Aufmerksamkeit','Priorität'];
-  const rankColors=[C.forest,C.moss,[155,107,74],[196,154,60]];
-  sorted.forEach((x,rank)=>{
-    const s=S[x.i];
-    setFill(rankColors[rank]); doc.roundedRect(ml,y,cw,15,2,2,'F');
-    setFont(7,'bold'); setTxt([163,196,168]);
-    doc.text(`${rank+1}. ${rankLabels[rank].toUpperCase()}`,ml+5,y+5.5);
-    setFont(10,'bold'); setTxt(C.white);
-    doc.text(s.l,ml+5,y+12);
-    setFont(12,'bold'); setTxt([212,230,214]);
-    doc.text(`${x.a.toFixed(1)}`,ml+cw-5,y+11,'right');
-    y+=19;
-  });
-
-  y+=4;
-
-  // Summary conclusion box
-  setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.3);
-  doc.roundedRect(ml,y,cw,46,3,3,'FD');
-  setFill(C.moss); doc.roundedRect(ml,y,3,46,1,1,'F');
-  setFont(8,'bold'); setTxt(C.forest);
-  doc.text('ZUSAMMENFASSUNG',ml+8,y+8);
-  const conclusionText=`Die ${R.length} Teilnehmer des Zirkularität Summit 2026 bewerten das Thema insgesamt ${sent.toLowerCase()} (Ø ${ovAvg.toFixed(1)}/10). Stärkstes Handlungsfeld ist ${S[sorted[0].i].l} — hier besteht die größte Zustimmung und Kommunikationschance. Den höchsten Handlungsbedarf signalisiert ${S[sorted[sorted.length-1].i].l}. Die qualitativen Rückmeldungen der Teilnehmer enthalten konkrete Impulse für die nächste Planungsrunde des Teams Nachhaltiges Bauen.`;
-  setFont(8,'normal'); setTxt(C.t2);
-  const cLines=doc.splitTextToSize(conclusionText,cw-14);
-  doc.text(cLines,ml+8,y+16);
-  y+=52;
-
-  // Footer on all pages
-  const totalPages=doc.getNumberOfPages();
-  for(let p=1;p<=totalPages;p++){
-    doc.setPage(p);
-    setFill(C.bg); doc.rect(0,ph-12,pw,12,'F');
-    setDraw(C.mist); doc.setLineWidth(0.3);
-    doc.line(ml,ph-12,pw-mr,ph-12);
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text('🌿 Zirkularität Summit 2026 — Lindner · Nachhaltiges Bauen · Vertraulich',ml,ph-5);
-    doc.text(`Seite ${p} / ${totalPages}`,pw-mr,ph-5,'right');
-  }
-
-  doc.save(`Zirkularitaet_Summit_2026_Bericht_${new Date().toISOString().slice(0,10)}.pdf`);
-}
-</script>
-</body>
-</html>
+  const ti=avgs.indexOf(Math.max(...
