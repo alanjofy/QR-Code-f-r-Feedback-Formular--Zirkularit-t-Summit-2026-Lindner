@@ -345,6 +345,15 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
 .btn-ty{background:none;border:1px solid rgba(110,158,116,.3);color:rgba(200,220,202,.6);padding:10px 22px;border-radius:8px;font-family:var(--fs);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
 .btn-ty:hover{border-color:var(--sage);color:#fff;}
 
+
+/* Required field validation */
+.sc.has-error{border-color:#c8503a !important;box-shadow:0 0 0 3px rgba(200,80,58,.1) !important;}
+.q-text::after{content:' *';color:#c8503a;font-style:normal;}
+textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !important;}
+.field-error-msg{font-size:11px;color:#c8503a;margin-top:5px;display:none;letter-spacing:.02em;}
+.field-error-msg.show{display:block;}
+.sub-required-note{text-align:center;font-size:10px;color:var(--t3);letter-spacing:.04em;margin-top:6px;}
+.sub-required-note span{color:#c8503a;}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pop{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
@@ -518,44 +527,52 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
     <div class="prog-pill" id="pp3"></div>
   </div>
   <div class="form-wrap">
-    <div class="sc" style="--sc-color:#537a58">
+    <div class="sc" id="sc0" style="--sc-color:#537a58">
       <div class="sc-head"><div class="sc-num-badge">01</div><div class="sc-title-wrap"><div class="sc-cat">Wirtschaftlichkeit</div><div class="sc-name">Rentabilität</div></div><div class="sc-score-badge" style="border-color:#537a58"><span class="sc-score-n" id="r0" style="color:#537a58">5</span></div></div>
       <div class="sc-body">
         <div class="q-text">Welche Rentabilitätsmöglichkeiten siehst du?</div>
         <textarea id="t0" placeholder="Deine Einschätzung…" oninput="inp(0)"></textarea>
+        <div class="field-error-msg" id="err0">Bitte fülle dieses Feld aus.</div>
+        <div id="terr0" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
         <div class="sldr-label">Auf einer Skala von 1–10: Wie hoch schätzt du die Rentabilität ein?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s0" oninput="sl(0,this.value)" style="accent-color:#537a58"><span class="sldr-val" id="v0" style="color:#537a58">5</span></div>
         <div class="sldr-ends"><span>Niedrig</span><span>Hoch</span></div>
       </div>
     </div>
-    <div class="sc" style="--sc-color:#6b9450">
+    <div class="sc" id="sc1" style="--sc-color:#6b9450">
       <div class="sc-head"><div class="sc-num-badge">02</div><div class="sc-title-wrap"><div class="sc-cat">Ökologie</div><div class="sc-name">Umweltwirkung</div></div><div class="sc-score-badge" style="border-color:#6b9450"><span class="sc-score-n" id="r1" style="color:#6b9450">5</span></div></div>
       <div class="sc-body">
         <div class="q-text">Wie wichtig ist die nachweisbare ökologische Verbesserung durch zirkuläres Bauen?</div>
         <textarea id="t1" placeholder="Deine Einschätzung…" oninput="inp(1)"></textarea>
+        <div class="field-error-msg" id="err1">Bitte fülle dieses Feld aus.</div>
+        <div id="terr1" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
         <div class="sldr-label">Auf einer Skala von 1–10: Wie wichtig ist dir dieser Aspekt?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s1" oninput="sl(1,this.value)" style="accent-color:#6b9450"><span class="sldr-val" id="v1" style="color:#6b9450">5</span></div>
         <div class="sldr-ends"><span>Weniger wichtig</span><span>Sehr wichtig</span></div>
       </div>
     </div>
-    <div class="sc" style="--sc-color:#9b6b4a">
+    <div class="sc" id="sc2" style="--sc-color:#9b6b4a">
       <div class="sc-head"><div class="sc-num-badge">03</div><div class="sc-title-wrap"><div class="sc-cat">Image</div><div class="sc-name">Unternehmensimage</div></div><div class="sc-score-badge" style="border-color:#9b6b4a"><span class="sc-score-n" id="r2" style="color:#9b6b4a">5</span></div></div>
       <div class="sc-body">
         <div class="q-text">Welche Maßnahmen sind notwendig, um die positiven Aspekte der Zirkularität auf das Unternehmensimage wirken zu lassen?</div>
         <textarea id="t2" placeholder="Deine Einschätzung…" oninput="inp(2)"></textarea>
+        <div class="field-error-msg" id="err2">Bitte fülle dieses Feld aus.</div>
+        <div id="terr2" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
         <div class="sldr-label">Auf einer Skala von 1–10: Wie stark wirkt Zirkularität auf das Image?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s2" oninput="sl(2,this.value)" style="accent-color:#9b6b4a"><span class="sldr-val" id="v2" style="color:#9b6b4a">5</span></div>
         <div class="sldr-ends"><span>Kaum</span><span>Sehr stark</span></div>
       </div>
     </div>
-    <div class="sc" style="--sc-color:#c49a3c">
+    <div class="sc" id="sc3" style="--sc-color:#c49a3c">
       <div class="sc-head"><div class="sc-num-badge">04</div><div class="sc-title-wrap"><div class="sc-cat">Technische Umsetzung</div><div class="sc-name">Voraussetzungen</div></div><div class="sc-score-badge" style="border-color:#c49a3c"><span class="sc-score-n" id="r3" style="color:#c49a3c">5</span></div></div>
       <div class="sc-body">
         <div class="q-text">Sind alle technischen Voraussetzungen für zirkuläres Handeln erfüllt? Ggf. was muss verbessert werden?</div>
         <textarea id="t3" placeholder="Deine Einschätzung…" oninput="inp(3)"></textarea>
+        <div class="field-error-msg" id="err3">Bitte fülle dieses Feld aus.</div>
+        <div id="terr3" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
         <div class="sldr-label">Auf einer Skala von 1–10: Wie gut sind die technischen Voraussetzungen erfüllt?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s3" oninput="sl(3,this.value)" style="accent-color:#c49a3c"><span class="sldr-val" id="v3" style="color:#c49a3c">5</span></div>
@@ -565,6 +582,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
     <div class="submit-wrap">
       <button class="btn-submit" id="submit-btn" onclick="submitSurvey()">Feedback absenden</button>
       <p class="sub-note">Anonym · Nur intern für Nachhaltiges Bauen sichtbar · Summit 2026</p>
+      <p class="sub-required-note"><span>*</span> Alle Textfelder sind Pflichtfelder</p>
     </div>
   </div>
 </div>
@@ -657,9 +675,35 @@ function copyLink(e){
    SURVEY LOGIC
 ════════════════════════════════════════ */
 function sl(i,v){document.getElementById('v'+i).textContent=v;document.getElementById('r'+i).textContent=v;}
-function inp(i){document.getElementById('pp'+i).classList.toggle('done',document.getElementById('t'+i).value.trim().length>0);}
+function inp(i){
+  const val=document.getElementById('t'+i).value.trim().length>0;
+  document.getElementById('pp'+i).classList.toggle('done',val);
+  // clear error highlight as soon as user types
+  document.getElementById('t'+i).style.borderColor='';
+  const err=document.getElementById('terr'+i);
+  if(err) err.style.display='none';
+}
 
 async function submitSurvey(){
+  // Validate all 4 text fields are filled
+  let valid=true;
+  for(let i=0;i<4;i++){
+    const ta=document.getElementById('t'+i);
+    const err=document.getElementById('terr'+i);
+    if(!ta.value.trim()){
+      ta.style.borderColor='#c8503a';
+      ta.style.background='#fdf6f4';
+      if(err) err.style.display='block';
+      valid=false;
+    }
+  }
+  if(!valid){
+    // scroll to first empty field
+    const first=[0,1,2,3].find(i=>!document.getElementById('t'+i).value.trim());
+    if(first!==undefined) document.getElementById('t'+first).scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+
   const btn=document.getElementById('submit-btn');
   btn.disabled=true;btn.textContent='Wird gespeichert…';
   const row={
@@ -667,10 +711,10 @@ async function submitSurvey(){
     score_oekologie:          +document.getElementById('s1').value,
     score_image:              +document.getElementById('s2').value,
     score_technik:            +document.getElementById('s3').value,
-    text_wirtschaftlichkeit:  document.getElementById('t0').value.trim()||null,
-    text_oekologie:           document.getElementById('t1').value.trim()||null,
-    text_image:               document.getElementById('t2').value.trim()||null,
-    text_technik:             document.getElementById('t3').value.trim()||null,
+    text_wirtschaftlichkeit:  document.getElementById('t0').value.trim(),
+    text_oekologie:           document.getElementById('t1').value.trim(),
+    text_image:               document.getElementById('t2').value.trim(),
+    text_technik:             document.getElementById('t3').value.trim(),
   };
   try {
     await dbInsert(row);
@@ -685,6 +729,10 @@ async function submitSurvey(){
 function resetSurvey(){
   for(let i=0;i<4;i++){
     document.getElementById('t'+i).value='';
+    document.getElementById('t'+i).style.borderColor='';
+    document.getElementById('t'+i).style.background='';
+    const err=document.getElementById('terr'+i);
+    if(err) err.style.display='none';
     document.getElementById('s'+i).value=5;
     document.getElementById('v'+i).textContent=5;
     document.getElementById('r'+i).textContent=5;
@@ -696,7 +744,7 @@ function resetSurvey(){
 /* ════════════════════════════════════════
    ADMIN
 ════════════════════════════════════════ */
-const ADMIN_PW = 'Lindner2026';
+const ADMIN_PW = 'lindner2026';
 
 function login(){
   const pw=document.getElementById('pw').value;
