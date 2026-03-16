@@ -10,12 +10,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-  /* ══════════════════════════════════════════════
-     🔧 CONFIGURATION — fill these in after setup
-     See SETUP.md for step-by-step instructions
-  ══════════════════════════════════════════════ */
-  const SUPABASE_URL = 'https://zubjimmixfaytoxyyvpj.supabase.co';       // e.g. https://xxxx.supabase.co
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1YmppbW1peGZheXRveHl5dnBqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MjU2NjcsImV4cCI6MjA4OTAwMTY2N30.8xR1HPnnjxt9LThrHaDHm3jYypeTBwJfnz4T0-4yEZU'; // long string from Supabase dashboard
+  const SUPABASE_URL = 'https://zubjimmixfaytoxyyvpj.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1YmppbW1peGZheXRveHl5dnBqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MjU2NjcsImV4cCI6MjA4OTAwMTY2N30.8xR1HPnnjxt9LThrHaDHm3jYypeTBwJfnz4T0-4yEZU';
   const TABLE_NAME = 'feedback';
 </script>
 
@@ -34,7 +30,7 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .view{display:none;}
 .view.active{display:block;}
 
-/* ══ ADMIN HOME — full layout ══ */
+/* ══ ADMIN HOME ══ */
 #view-admin-home{background:var(--forest);min-height:100vh;}
 .ah-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid rgba(110,158,116,.15);}
 .ah-brand{display:flex;align-items:center;gap:10px;}
@@ -62,91 +58,33 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .qr-steps{display:flex;flex-direction:column;gap:10px;}
 .qs{display:flex;align-items:flex-start;gap:12px;font-size:11px;font-weight:300;color:rgba(200,220,202,.5);line-height:1.6;}
 .qs-n{width:22px;height:22px;border-radius:50%;border:1px solid rgba(110,158,116,.25);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--sage);flex-shrink:0;margin-top:1px;}
-
-/* ── HOME LAYOUT — fully responsive ── */
-.home-full{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:calc(100vh - 65px);
-}
-.home-left{
-  padding:clamp(28px,5vw,64px) clamp(24px,5vw,60px);
-  display:flex;flex-direction:column;justify-content:center;
-  position:relative;z-index:1;
-  min-height:0;
-}
-.home-right{
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  background:rgba(0,0,0,.08);
-  border-left:1px solid rgba(110,158,116,.1);
-}
-.home-right::before{
-  content:'';position:absolute;
-  width:min(500px,90%);height:min(500px,90%);border-radius:50%;
-  border:1px solid rgba(110,158,116,.07);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-}
-.home-right::after{
-  content:'';position:absolute;
-  width:min(340px,65%);height:min(340px,65%);border-radius:50%;
-  border:1px solid rgba(110,158,116,.1);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-}
-.home-qr-wrap{
-  display:flex;flex-direction:column;align-items:center;
-  gap:clamp(12px,2vw,20px);position:relative;z-index:1;
-  padding:20px;
-}
-.home-qr-glow{
-  position:absolute;
-  width:min(280px,70vw);height:min(280px,70vw);border-radius:50%;
-  background:radial-gradient(circle,rgba(110,158,116,.15) 0%,transparent 70%);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  pointer-events:none;
-}
-.home-qr-frame{
-  padding:clamp(14px,2vw,22px) !important;
-  border-radius:20px !important;
-  box-shadow:0 12px 60px rgba(0,0,0,.35) !important;
-}
-.home-qr-frame #qr-code-el{
-  width:clamp(160px,15vw,240px) !important;
-  height:clamp(160px,15vw,240px) !important;
-}
+.home-full{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 65px);}
+.home-left{padding:clamp(28px,5vw,64px) clamp(24px,5vw,60px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;min-height:0;}
+.home-right{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:rgba(0,0,0,.08);border-left:1px solid rgba(110,158,116,.1);}
+.home-right::before{content:'';position:absolute;width:min(500px,90%);height:min(500px,90%);border-radius:50%;border:1px solid rgba(110,158,116,.07);top:50%;left:50%;transform:translate(-50%,-50%);}
+.home-right::after{content:'';position:absolute;width:min(340px,65%);height:min(340px,65%);border-radius:50%;border:1px solid rgba(110,158,116,.1);top:50%;left:50%;transform:translate(-50%,-50%);}
+.home-qr-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2vw,20px);position:relative;z-index:1;padding:20px;}
+.home-qr-glow{position:absolute;width:min(280px,70vw);height:min(280px,70vw);border-radius:50%;background:radial-gradient(circle,rgba(110,158,116,.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.home-qr-frame{padding:clamp(14px,2vw,22px) !important;border-radius:20px !important;box-shadow:0 12px 60px rgba(0,0,0,.35) !important;}
+.home-qr-frame #qr-code-el{width:clamp(160px,15vw,240px) !important;height:clamp(160px,15vw,240px) !important;}
 .home-qr-hint{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(163,196,168,.45);}
 .home-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
 .home-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.05);border:1px solid rgba(110,158,116,.18);border-radius:20px;padding:6px 14px;font-size:11px;color:rgba(200,220,202,.6);}
 .home-pill-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-
-/* ── TABLET: stack at 800px ── */
 @media(max-width:800px){
   .home-full{grid-template-columns:1fr;min-height:auto;}
   .home-left{padding:36px 24px;justify-content:flex-start;}
-  .home-right{
-    display:flex;min-height:340px;
-    border-left:none;border-top:1px solid rgba(110,158,116,.1);
-  }
-  .home-qr-frame #qr-code-el{
-    width:clamp(140px,40vw,200px) !important;
-    height:clamp(140px,40vw,200px) !important;
-  }
+  .home-right{display:flex;min-height:340px;border-left:none;border-top:1px solid rgba(110,158,116,.1);}
+  .home-qr-frame #qr-code-el{width:clamp(140px,40vw,200px) !important;height:clamp(140px,40vw,200px) !important;}
   .home-pills{margin-top:20px;}
   .qr-sub{max-width:100%;}
 }
-/* ── MOBILE: small phones ── */
 @media(max-width:420px){
   .ah-nav{padding:12px 16px;}
-  .ah-brand-text{font-size:13px;}
   .home-left{padding:24px 16px;}
   .qr-title{font-size:28px;}
   .home-right{min-height:280px;}
-  .home-qr-frame #qr-code-el{
-    width:140px !important;height:140px !important;
-  }
-  .qr-url-chip{font-size:10px;}
-  .home-pills{gap:6px;}
-  .home-pill{padding:5px 10px;font-size:10px;}
+  .home-qr-frame #qr-code-el{width:140px !important;height:140px !important;}
   .kpi-row{grid-template-columns:repeat(2,1fr);}
   .stat-grid{grid-template-columns:1fr;}
   .dash-bar{flex-wrap:wrap;}
@@ -172,7 +110,7 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .l-back{display:block;text-align:center;margin-top:16px;font-size:11px;color:var(--t3);cursor:pointer;letter-spacing:.08em;transition:color .2s;}
 .l-back:hover{color:var(--moss);}
 
-/* ══ FULL ADMIN DASHBOARD ══ */
+/* ══ DASHBOARD ══ */
 #view-admin-dash{background:var(--bg);min-height:100vh;}
 .dash-bar{background:var(--forest);padding:0 22px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--pine);}
 .db-brand{display:flex;align-items:center;gap:10px;padding:13px 0;}
@@ -183,7 +121,10 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .db-btn{padding:0 16px;height:100%;font-family:var(--fs);font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;background:none;border:none;border-left:1px solid rgba(110,158,116,.2);cursor:pointer;color:rgba(200,220,202,.45);transition:color .2s;}
 .db-btn:hover{color:#fff;}
 .db-btn.g{color:var(--sage);}
-.dash-inner{padding:22px 20px 60px;max-width:900px;margin:0 auto;}
+.db-btn.export{color:var(--amber);}
+.db-btn-danger{padding:0 16px;height:100%;font-family:var(--fs);font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;background:none;border:none;border-left:1px solid rgba(110,158,116,.2);cursor:pointer;color:rgba(220,100,80,.5);transition:color .2s;}
+.db-btn-danger:hover{color:#e06050;}
+.dash-inner{padding:22px 20px 60px;max-width:960px;margin:0 auto;}
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px;box-shadow:0 1px 4px rgba(28,26,22,.04);}
 .kpi-l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--t3);margin-bottom:8px;}
@@ -218,12 +159,11 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .cbox-eyebrow{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;}
 .cbox-h{font-family:var(--fd);font-size:22px;font-style:italic;color:#fff;margin-bottom:10px;}
 .cbox-p{font-size:12px;font-weight:300;color:rgba(200,220,202,.6);line-height:1.85;}
-.cbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(110,158,116,.12);margin-top:20px;border-radius:6px;overflow:hidden;}
+.cbox-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(110,158,116,.12);margin-top:20px;border-radius:6px;overflow:hidden;}
 .cg-cell{background:rgba(232,240,232,.03);padding:14px;}
 .cg-l{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:5px;}
-.cg-v{font-family:var(--fd);font-size:14px;font-style:italic;color:#fff;}
+.cg-v{font-family:var(--fd);font-size:13px;font-style:italic;color:#fff;}
 .cg-s{font-size:10px;color:var(--fern);margin-top:2px;}
-/* Charts */
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 18px 20px;box-shadow:0 1px 4px rgba(28,26,22,.04);}
 .chart-card-title{font-family:var(--fd);font-size:16px;font-weight:400;color:var(--t1);margin-bottom:3px;}
@@ -245,15 +185,9 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .spread-track{height:8px;background:var(--mist);border-radius:4px;position:relative;}
 .spread-range{position:absolute;top:0;height:8px;border-radius:4px;opacity:.28;}
 .spread-avg-line{position:absolute;top:-3px;width:3px;height:14px;border-radius:2px;transform:translateX(-50%);}
-/* Loading spinner */
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(110,158,116,.2);border-top-color:var(--sage);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .load-row{display:flex;align-items:center;justify-content:center;padding:32px;font-size:12px;color:var(--t3);font-style:italic;font-family:var(--fd);}
-
-/* ── DELETE CONTROLS ── */
-.db-btn-danger{padding:0 16px;height:100%;font-family:var(--fs);font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;background:none;border:none;border-left:1px solid rgba(110,158,116,.2);cursor:pointer;color:rgba(220,100,80,.5);transition:color .2s;}
-.db-btn-danger:hover{color:#e06050;}
-.db-btn.export{color:var(--amber);}
 .del-all-bar{display:flex;align-items:center;justify-content:space-between;background:#fdf6f4;border:1px solid #f0d4cc;border-radius:var(--r);padding:12px 16px;margin-bottom:16px;}
 .del-all-bar p{font-size:12px;color:var(--clay);font-weight:300;line-height:1.5;}
 .del-all-bar p strong{font-weight:500;}
@@ -274,7 +208,7 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .btn-confirm-delete{background:#c8503a;border:none;color:#fff;padding:9px 20px;border-radius:8px;font-family:var(--fs);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
 .btn-confirm-delete:hover{background:#a83e2c;}
 
-/* ══ PARTICIPANT WELCOME ══ */
+/* ══ WELCOME ══ */
 #view-welcome{background:var(--forest);min-height:100vh;display:flex;flex-direction:column;}
 .wlc-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 28px 36px;text-align:center;position:relative;overflow:hidden;}
 .wlc-body::before{content:'';position:absolute;top:-100px;right:-100px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(110,158,116,.07);}
@@ -286,7 +220,7 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .wlc-h{font-family:var(--fd);font-size:clamp(38px,8vw,66px);font-weight:400;line-height:1.0;color:#fff;margin-bottom:16px;position:relative;z-index:1;animation:rise .5s .15s ease both;}
 .wlc-h em{font-style:italic;color:var(--sage);}
 .wlc-divider{width:48px;height:1px;background:rgba(163,196,168,.3);margin:0 auto 20px;animation:expand .5s .3s ease both;position:relative;z-index:1;}
-.wlc-desc{font-size:13px;font-weight:300;line-height:1.85;color:rgba(200,220,202,.6);max-width:360px;margin:0 auto 32px;position:relative;z-index:1;animation:rise .5s .2s ease both;}
+.wlc-desc{font-size:13px;font-weight:300;line-height:1.85;color:rgba(200,220,202,.6);max-width:400px;margin:0 auto 32px;position:relative;z-index:1;animation:rise .5s .2s ease both;}
 .wlc-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;position:relative;z-index:1;animation:rise .5s .28s ease both;}
 .wlc-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(110,158,116,.2);border-radius:20px;padding:6px 14px;font-size:11px;color:rgba(200,220,202,.7);}
 .wlc-pill-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
@@ -305,9 +239,9 @@ body{font-family:var(--fs);background:var(--bg);color:var(--t1);overflow-x:hidde
 .progress-row{background:rgba(0,0,0,.18);padding:9px 24px;display:flex;gap:6px;}
 .prog-pill{flex:1;height:3px;border-radius:2px;background:rgba(168,200,172,.15);transition:background .4s;}
 .prog-pill.done{background:var(--fern);}
-.form-wrap{max-width:640px;margin:0 auto;padding:22px 20px 70px;}
+.form-wrap{max-width:680px;margin:0 auto;padding:22px 20px 70px;}
 .sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:12px;overflow:hidden;transition:border-color .3s,box-shadow .3s;box-shadow:0 1px 4px rgba(28,26,22,.05);animation:rise .5s ease both;}
-.sc:nth-child(1){animation-delay:.06s}.sc:nth-child(2){animation-delay:.12s}.sc:nth-child(3){animation-delay:.18s}.sc:nth-child(4){animation-delay:.24s}
+.sc:nth-child(1){animation-delay:.06s}.sc:nth-child(2){animation-delay:.12s}.sc:nth-child(3){animation-delay:.18s}.sc:nth-child(4){animation-delay:.24s}.sc:nth-child(5){animation-delay:.30s}.sc:nth-child(6){animation-delay:.36s}
 .sc:focus-within{border-color:var(--moss);box-shadow:0 3px 20px rgba(46,74,46,.1);}
 .sc-head{display:flex;align-items:center;padding:16px 18px 14px;gap:12px;border-bottom:1px solid var(--border);}
 .sc-num-badge{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--sf2);border:1px solid var(--border);font-size:11px;font-weight:500;color:var(--t3);}
@@ -334,6 +268,8 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
 .btn-submit:hover{background:var(--pine);}
 .btn-submit:disabled{opacity:.5;cursor:not-allowed;}
 .sub-note{text-align:center;font-size:10px;color:var(--t3);letter-spacing:.07em;margin-top:10px;}
+.sub-required-note{text-align:center;font-size:10px;color:var(--t3);letter-spacing:.04em;margin-top:6px;}
+.sub-required-note span{color:#c8503a;}
 
 /* ══ THANKS ══ */
 #view-thanks{background:var(--forest);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 24px;}
@@ -345,26 +281,15 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
 .btn-ty{background:none;border:1px solid rgba(110,158,116,.3);color:rgba(200,220,202,.6);padding:10px 22px;border-radius:8px;font-family:var(--fs);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
 .btn-ty:hover{border-color:var(--sage);color:#fff;}
 
-
-/* Required field validation */
-.sc.has-error{border-color:#c8503a !important;box-shadow:0 0 0 3px rgba(200,80,58,.1) !important;}
-.q-text::after{content:' *';color:#c8503a;font-style:normal;}
-textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !important;}
-.field-error-msg{font-size:11px;color:#c8503a;margin-top:5px;display:none;letter-spacing:.02em;}
-.field-error-msg.show{display:block;}
-.sub-required-note{text-align:center;font-size:10px;color:var(--t3);letter-spacing:.04em;margin-top:6px;}
-.sub-required-note span{color:#c8503a;}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pop{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes expand{from{width:0}to{width:48px}}
-
-
 </style>
 </head>
 <body>
 
-<!-- ══════════════ ADMIN HOME ══════════════ -->
+<!-- ══ ADMIN HOME ══ -->
 <div id="view-admin-home" class="view">
   <div class="ah-nav">
     <div class="ah-brand">
@@ -375,37 +300,30 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
       <button class="btn-nav btn-nav-solid" onclick="sv('view-admin-login')">Admin Login</button>
     </div>
   </div>
-
   <div class="home-full">
-
-    <!-- Left: text + steps -->
     <div class="home-left">
       <div class="qr-eyebrow">Teilnehmer · Zugang</div>
       <h2 class="qr-title">QR-Code für<br><em>Feedback-Formular</em></h2>
       <p class="qr-sub">Zeigen Sie diesen Code am Ende des Summits. Teilnehmer gelangen direkt zur Begrüßungsseite und dem Fragebogen.</p>
-
       <div class="qr-url-chip" style="margin-bottom:32px">
         <span id="qr-url-text">Wird geladen…</span>
         <button onclick="copyLink(event)">Kopieren</button>
       </div>
-
       <div class="qr-steps">
         <div class="qs"><div class="qs-n">1</div><span>Teilnehmer scannt den QR-Code mit dem Smartphone</span></div>
         <div class="qs"><div class="qs-n">2</div><span>Begrüßungsseite öffnet sich automatisch</span></div>
         <div class="qs"><div class="qs-n">3</div><span>Fragebogen ausfüllen &amp; anonym absenden</span></div>
         <div class="qs"><div class="qs-n">4</div><span>Ergebnisse werden in der Datenbank gespeichert</span></div>
       </div>
-
-      <!-- Area pills -->
       <div class="home-pills">
-        <div class="home-pill"><span class="home-pill-dot" style="background:#537a58"></span>Wirtschaftlichkeit</div>
-        <div class="home-pill"><span class="home-pill-dot" style="background:#6b9450"></span>Ökologie</div>
-        <div class="home-pill"><span class="home-pill-dot" style="background:#9b6b4a"></span>Image</div>
-        <div class="home-pill"><span class="home-pill-dot" style="background:#c49a3c"></span>Technische Umsetzung</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#537a58"></span>Zeit</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#6b9450"></span>Image & Kommunikation</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#9b6b4a"></span>Wirtschaftlichkeit</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#c49a3c"></span>Ökologie & Nachhaltigkeit</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#5a7a9a"></span>Technische Umsetzung</div>
+        <div class="home-pill"><span class="home-pill-dot" style="background:#7a5a9a"></span>Markt & Preisgestaltung</div>
       </div>
     </div>
-
-    <!-- Right: big QR -->
     <div class="home-right">
       <div class="home-qr-wrap">
         <div class="home-qr-glow"></div>
@@ -416,10 +334,10 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
         <p class="home-qr-hint">Mit Smartphone scannen</p>
       </div>
     </div>
-
   </div>
 </div>
-<!-- ══════════════ ADMIN LOGIN ══════════════ -->
+
+<!-- ══ ADMIN LOGIN ══ -->
 <div id="view-admin-login" class="view">
   <div style="min-height:100vh;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:40px 20px">
     <div class="lc">
@@ -435,15 +353,12 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
       </div>
       <div id="pw-err" class="l-err">Falsches Passwort — bitte erneut versuchen.</div>
       <button class="btn-login" onclick="login()">Einloggen</button>
-      <div id="login-dash-btn" style="display:none;margin-top:12px">
-        <button onclick="sv('view-admin-dash');loadAndRender()" style="width:100%;background:var(--moss);color:#fff;border:none;border-radius:var(--r);padding:12px;font-family:var(--fs);font-size:12px;font-weight:500;letter-spacing:.12em;cursor:pointer;transition:background .2s;">Dashboard öffnen →</button>
-      </div>
       <a class="l-back" onclick="sv('view-admin-home')">← Zurück zur Übersicht</a>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ FULL DASHBOARD ══════════════ -->
+<!-- ══ DASHBOARD ══ -->
 <div id="view-admin-dash" class="view">
   <div class="dash-bar">
     <div class="db-brand">
@@ -477,7 +392,7 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
       <div id="stat-content" style="display:none">
         <div class="stat-grid">
           <div class="chart-card"><div class="chart-card-title">Score-Verteilung</div><div class="chart-card-sub">Anteil je Bereich</div><div class="donut-wrap"><canvas id="donut-canvas" width="200" height="200"></canvas><div class="donut-center"><span class="dc-num" id="dc-tot">—</span><span class="dc-lbl">Ø Gesamt</span></div></div><div class="donut-legend" id="donut-legend"></div></div>
-          <div class="chart-card"><div class="chart-card-title">Radar-Übersicht</div><div class="chart-card-sub">Ø Score je Bereich</div><canvas id="radar-canvas" width="240" height="220" style="display:block;margin:10px auto 0"></canvas></div>
+          <div class="chart-card"><div class="chart-card-title">Radar-Übersicht</div><div class="chart-card-sub">Ø Score je Bereich</div><canvas id="radar-canvas" width="240" height="240" style="display:block;margin:10px auto 0"></canvas></div>
         </div>
         <div class="chart-card" style="margin-top:10px"><div class="chart-card-title">Score-Häufigkeit</div><div class="chart-card-sub">Wie oft wurde jeder Wert (1–10) vergeben</div><canvas id="hist-canvas" width="800" height="140" style="width:100%;display:block;margin-top:14px"></canvas></div>
         <div class="chart-card" style="margin-top:10px"><div class="chart-card-title">Score-Spanne je Bereich</div><div class="chart-card-sub">Min · Durchschnitt · Max</div><div id="spread-bars" style="margin-top:14px"></div></div>
@@ -495,26 +410,28 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
   </div>
 </div>
 
-<!-- ══════════════ PARTICIPANT WELCOME ══════════════ -->
+<!-- ══ WELCOME ══ -->
 <div id="view-welcome" class="view">
   <div class="wlc-body">
     <div class="wlc-icon">🌿</div>
     <div class="wlc-tag"><span class="wlc-tag-dot"></span><span>Zirkularität Summit 2026 · Lindner</span></div>
     <h1 class="wlc-h">Ihre <em>Stimme</em><br>zählt.</h1>
     <div class="wlc-divider"></div>
-    <p class="wlc-desc">Vier kurze Themenbereiche — Ihre ehrliche Einschätzung hilft Nachhaltiges Bauen, den nächsten Schritt gemeinsam zu gestalten.</p>
+    <p class="wlc-desc">Sechs Themenbereiche — Ihre ehrliche Einschätzung hilft Nachhaltiges Bauen, den nächsten Schritt gemeinsam zu gestalten.</p>
     <div class="wlc-pills">
-      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#537a58"></div>Wirtschaftlichkeit</div>
-      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#6b9450"></div>Ökologie</div>
-      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#9b6b4a"></div>Image</div>
-      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#c49a3c"></div>Technische Umsetzung</div>
+      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#537a58"></div>Zeit</div>
+      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#6b9450"></div>Image & Kommunikation</div>
+      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#9b6b4a"></div>Wirtschaftlichkeit</div>
+      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#c49a3c"></div>Ökologie & Nachhaltigkeit</div>
+      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#5a7a9a"></div>Technische Umsetzung</div>
+      <div class="wlc-pill"><div class="wlc-pill-dot" style="background:#7a5a9a"></div>Markt & Preisgestaltung</div>
     </div>
     <button class="btn-start" onclick="sv('view-survey')">Jetzt starten →</button>
   </div>
   <div class="wlc-footer">🌿 Zirkularität Summit 2026 — Lindner · Anonym · Vertraulich</div>
 </div>
 
-<!-- ══════════════ SURVEY ══════════════ -->
+<!-- ══ SURVEY ══ -->
 <div id="view-survey" class="view">
   <div class="wordmark-bar">
     <div class="wm-left"><span class="wm-leaf">🌿</span><span class="wm-title"><strong>Zirkularität</strong> Summit 2026 — Lindner</span></div>
@@ -525,60 +442,137 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
     <div class="prog-pill" id="pp1"></div>
     <div class="prog-pill" id="pp2"></div>
     <div class="prog-pill" id="pp3"></div>
+    <div class="prog-pill" id="pp4"></div>
+    <div class="prog-pill" id="pp5"></div>
   </div>
   <div class="form-wrap">
+
+    <!-- 01 ZEIT -->
     <div class="sc" id="sc0" style="--sc-color:#537a58">
-      <div class="sc-head"><div class="sc-num-badge">01</div><div class="sc-title-wrap"><div class="sc-cat">Wirtschaftlichkeit</div><div class="sc-name">Rentabilität</div></div><div class="sc-score-badge" style="border-color:#537a58"><span class="sc-score-n" id="r0" style="color:#537a58">5</span></div></div>
+      <div class="sc-head">
+        <div class="sc-num-badge">01</div>
+        <div class="sc-title-wrap">
+          <div class="sc-cat">Zeit</div>
+          <div class="sc-name">Zukunftsperspektive</div>
+        </div>
+        <div class="sc-score-badge" style="border-color:#537a58"><span class="sc-score-n" id="r0" style="color:#537a58">5</span></div>
+      </div>
       <div class="sc-body">
-        <div class="q-text">Welche Rentabilitätsmöglichkeiten siehst du?</div>
+        <div class="q-text">Wo stehen wir in zwei und zehn Jahren? (Prozentualer Anteil zirkular am Umsatz) (je Geschäftsbereich)</div>
         <textarea id="t0" placeholder="Deine Einschätzung…" oninput="inp(0)"></textarea>
-        <div class="field-error-msg" id="err0">Bitte fülle dieses Feld aus.</div>
-        <div id="terr0" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
+        <div id="terr0" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
-        <div class="sldr-label">Auf einer Skala von 1–10: Wie hoch schätzt du die Rentabilität ein?</div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie realistisch schätzt du das Wachstum des zirkulären Umsatzanteils in den nächsten 10 Jahren ein?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s0" oninput="sl(0,this.value)" style="accent-color:#537a58"><span class="sldr-val" id="v0" style="color:#537a58">5</span></div>
-        <div class="sldr-ends"><span>Niedrig</span><span>Hoch</span></div>
+        <div class="sldr-ends"><span>Sehr unrealistisch</span><span>Sehr realistisch</span></div>
       </div>
     </div>
+
+    <!-- 02 IMAGE & KOMMUNIKATION -->
     <div class="sc" id="sc1" style="--sc-color:#6b9450">
-      <div class="sc-head"><div class="sc-num-badge">02</div><div class="sc-title-wrap"><div class="sc-cat">Ökologie</div><div class="sc-name">Umweltwirkung</div></div><div class="sc-score-badge" style="border-color:#6b9450"><span class="sc-score-n" id="r1" style="color:#6b9450">5</span></div></div>
+      <div class="sc-head">
+        <div class="sc-num-badge">02</div>
+        <div class="sc-title-wrap">
+          <div class="sc-cat">Image & Kommunikation</div>
+          <div class="sc-name">Markenbotschaft</div>
+        </div>
+        <div class="sc-score-badge" style="border-color:#6b9450"><span class="sc-score-n" id="r1" style="color:#6b9450">5</span></div>
+      </div>
       <div class="sc-body">
-        <div class="q-text">Wie wichtig ist die nachweisbare ökologische Verbesserung durch zirkuläres Bauen?</div>
+        <div class="q-text">Wie kann die LinLoop-Marketingkampagne mit der Botschaft von CircleNow kombiniert werden, um ein einheitliches Markenbild zu schaffen?</div>
         <textarea id="t1" placeholder="Deine Einschätzung…" oninput="inp(1)"></textarea>
-        <div class="field-error-msg" id="err1">Bitte fülle dieses Feld aus.</div>
-        <div id="terr1" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
+        <div id="terr1" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
-        <div class="sldr-label">Auf einer Skala von 1–10: Wie wichtig ist dir dieser Aspekt?</div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie stark trägt eine einheitliche Markenkommunikation zur Wahrnehmung von Zirkularität bei?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s1" oninput="sl(1,this.value)" style="accent-color:#6b9450"><span class="sldr-val" id="v1" style="color:#6b9450">5</span></div>
-        <div class="sldr-ends"><span>Weniger wichtig</span><span>Sehr wichtig</span></div>
+        <div class="sldr-ends"><span>Kaum relevant</span><span>Sehr entscheidend</span></div>
       </div>
     </div>
+
+    <!-- 03 WIRTSCHAFTLICHKEIT -->
     <div class="sc" id="sc2" style="--sc-color:#9b6b4a">
-      <div class="sc-head"><div class="sc-num-badge">03</div><div class="sc-title-wrap"><div class="sc-cat">Image</div><div class="sc-name">Unternehmensimage</div></div><div class="sc-score-badge" style="border-color:#9b6b4a"><span class="sc-score-n" id="r2" style="color:#9b6b4a">5</span></div></div>
+      <div class="sc-head">
+        <div class="sc-num-badge">03</div>
+        <div class="sc-title-wrap">
+          <div class="sc-cat">Wirtschaftlichkeit (Kosten-Nutzen)</div>
+          <div class="sc-name">Anreizmodelle</div>
+        </div>
+        <div class="sc-score-badge" style="border-color:#9b6b4a"><span class="sc-score-n" id="r2" style="color:#9b6b4a">5</span></div>
+      </div>
       <div class="sc-body">
-        <div class="q-text">Welche Maßnahmen sind notwendig, um die positiven Aspekte der Zirkularität auf das Unternehmensimage wirken zu lassen?</div>
+        <div class="q-text">Welche Anreizmodelle könnten die Wirtschaftlichkeit für sowohl Lindner als auch die Endkunden steigern?</div>
         <textarea id="t2" placeholder="Deine Einschätzung…" oninput="inp(2)"></textarea>
-        <div class="field-error-msg" id="err2">Bitte fülle dieses Feld aus.</div>
-        <div id="terr2" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
+        <div id="terr2" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
-        <div class="sldr-label">Auf einer Skala von 1–10: Wie stark wirkt Zirkularität auf das Image?</div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie hoch schätzt du das wirtschaftliche Potenzial zirkulärer Anreizmodelle ein?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s2" oninput="sl(2,this.value)" style="accent-color:#9b6b4a"><span class="sldr-val" id="v2" style="color:#9b6b4a">5</span></div>
+        <div class="sldr-ends"><span>Gering</span><span>Sehr hoch</span></div>
+      </div>
+    </div>
+
+    <!-- 04 ÖKOLOGIE -->
+    <div class="sc" id="sc3" style="--sc-color:#c49a3c">
+      <div class="sc-head">
+        <div class="sc-num-badge">04</div>
+        <div class="sc-title-wrap">
+          <div class="sc-cat">Ökologie & Nachhaltigkeit</div>
+          <div class="sc-name">CO₂ & Ressourcen</div>
+        </div>
+        <div class="sc-score-badge" style="border-color:#c49a3c"><span class="sc-score-n" id="r3" style="color:#c49a3c">5</span></div>
+      </div>
+      <div class="sc-body">
+        <div class="q-text">Beeinflussen nachweisbare CO₂- und Ressourceneinsparungen die Vergabe von Aufträgen & Produktpreisbildung heute und in den nächsten 2–5 Jahren? Und warum?</div>
+        <textarea id="t3" placeholder="Deine Einschätzung…" oninput="inp(3)"></textarea>
+        <div id="terr3" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
+        <div class="sep"></div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie stark beeinflussen CO₂- und Ressourceneinsparungen heute bereits Auftragsentscheidungen?</div>
+        <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s3" oninput="sl(3,this.value)" style="accent-color:#c49a3c"><span class="sldr-val" id="v3" style="color:#c49a3c">5</span></div>
         <div class="sldr-ends"><span>Kaum</span><span>Sehr stark</span></div>
       </div>
     </div>
-    <div class="sc" id="sc3" style="--sc-color:#c49a3c">
-      <div class="sc-head"><div class="sc-num-badge">04</div><div class="sc-title-wrap"><div class="sc-cat">Technische Umsetzung</div><div class="sc-name">Voraussetzungen</div></div><div class="sc-score-badge" style="border-color:#c49a3c"><span class="sc-score-n" id="r3" style="color:#c49a3c">5</span></div></div>
+
+    <!-- 05 TECHNISCHE UMSETZUNG -->
+    <div class="sc" id="sc4" style="--sc-color:#5a7a9a">
+      <div class="sc-head">
+        <div class="sc-num-badge">05</div>
+        <div class="sc-title-wrap">
+          <div class="sc-cat">Technische & Organisatorische Umsetzung</div>
+          <div class="sc-name">Prozessoptimierung</div>
+        </div>
+        <div class="sc-score-badge" style="border-color:#5a7a9a"><span class="sc-score-n" id="r4" style="color:#5a7a9a">5</span></div>
+      </div>
       <div class="sc-body">
-        <div class="q-text">Sind alle technischen Voraussetzungen für zirkuläres Handeln erfüllt? Ggf. was muss verbessert werden?</div>
-        <textarea id="t3" placeholder="Deine Einschätzung…" oninput="inp(3)"></textarea>
-        <div class="field-error-msg" id="err3">Bitte fülle dieses Feld aus.</div>
-        <div id="terr3" style="display:none;font-size:11px;color:#c8503a;margin-top:5px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
+        <div class="q-text">In welchen Bereichen müssen unternehmensinterne Prozesse optimiert werden, um die technische Machbarkeit hinsichtlich Zirkularität zu gewährleisten?</div>
+        <textarea id="t4" placeholder="Deine Einschätzung…" oninput="inp(4)"></textarea>
+        <div id="terr4" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
-        <div class="sldr-label">Auf einer Skala von 1–10: Wie gut sind die technischen Voraussetzungen erfüllt?</div>
-        <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s3" oninput="sl(3,this.value)" style="accent-color:#c49a3c"><span class="sldr-val" id="v3" style="color:#c49a3c">5</span></div>
-        <div class="sldr-ends"><span>Kaum erfüllt</span><span>Vollständig</span></div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie gut sind die aktuellen internen Prozesse auf zirkuläre Anforderungen vorbereitet?</div>
+        <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s4" oninput="sl(4,this.value)" style="accent-color:#5a7a9a"><span class="sldr-val" id="v4" style="color:#5a7a9a">5</span></div>
+        <div class="sldr-ends"><span>Nicht vorbereitet</span><span>Vollständig bereit</span></div>
       </div>
     </div>
+
+    <!-- 06 MARKT & PREISGESTALTUNG -->
+    <div class="sc" id="sc5" style="--sc-color:#7a5a9a">
+      <div class="sc-head">
+        <div class="sc-num-badge">06</div>
+        <div class="sc-title-wrap">
+          <div class="sc-cat">Markt & Preisgestaltung</div>
+          <div class="sc-name">Zahlungsbereitschaft</div>
+        </div>
+        <div class="sc-score-badge" style="border-color:#7a5a9a"><span class="sc-score-n" id="r5" style="color:#7a5a9a">5</span></div>
+      </div>
+      <div class="sc-body">
+        <div class="q-text">Welche Märkte zeigen bereits die größte Zahlungsbereitschaft für zirkuläre Bauprodukte?</div>
+        <textarea id="t5" placeholder="Deine Einschätzung…" oninput="inp(5)"></textarea>
+        <div id="terr5" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
+        <div class="sep"></div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie hoch schätzt du die aktuelle Zahlungsbereitschaft für zirkuläre Bauprodukte auf deinem Kernmarkt ein?</div>
+        <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s5" oninput="sl(5,this.value)" style="accent-color:#7a5a9a"><span class="sldr-val" id="v5" style="color:#7a5a9a">5</span></div>
+        <div class="sldr-ends"><span>Sehr gering</span><span>Sehr hoch</span></div>
+      </div>
+    </div>
+
     <div class="submit-wrap">
       <button class="btn-submit" id="submit-btn" onclick="submitSurvey()">Feedback absenden</button>
       <p class="sub-note">Anonym · Nur intern für Nachhaltiges Bauen sichtbar · Summit 2026</p>
@@ -587,7 +581,7 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
   </div>
 </div>
 
-<!-- ══════════════ THANKS ══════════════ -->
+<!-- ══ THANKS ══ -->
 <div id="view-thanks" class="view">
   <div style="min-height:100vh;background:var(--forest);display:flex;align-items:center;justify-content:center;padding:60px 24px">
     <div class="ty-box">
@@ -599,298 +593,8 @@ textarea.field-error{border-color:#c8503a !important;background:#fff9f8 !importa
   </div>
 </div>
 
-<script>
-/* ════════════════════════════════════════
-   SECTION CONFIG
-════════════════════════════════════════ */
-const S=[
-  {l:'Wirtschaftlichkeit',s:'Rentabilität',      c:'#537a58'},
-  {l:'Ökologie',          s:'Umweltwirkung',     c:'#6b9450'},
-  {l:'Image',             s:'Unternehmensimage', c:'#9b6b4a'},
-  {l:'Technische Umsetzung',s:'Voraussetzungen', c:'#c49a3c'}
-];
-
-/* ════════════════════════════════════════
-   SUPABASE API
-════════════════════════════════════════ */
-async function dbInsert(row) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify(row)
-  });
-  if (!res.ok) throw new Error(await res.text());
-}
-
-async function dbFetch() {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?select=*&order=created_at.asc`, {
-    headers: {
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-    }
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
-}
-
-/* ════════════════════════════════════════
-   ROUTING  (?view=survey → participant)
-════════════════════════════════════════ */
-function sv(id){
-  document.querySelectorAll('.view').forEach(v=>{v.style.display='none';v.classList.remove('active');});
-  const el=document.getElementById(id);
-  el.style.display='block';el.classList.add('active');
-}
-
-function getSurveyURL(){
-  return window.location.href.split('?')[0]+'?view=survey';
-}
-
-function initQR(){
-  const url=getSurveyURL();
-  document.getElementById('qr-url-text').textContent=url;
-  document.getElementById('qr-code-el').innerHTML='';
-  try {
-    new QRCode(document.getElementById('qr-code-el'),{
-      text:url,width:160,height:160,
-      colorDark:'#2e4a2e',colorLight:'#ffffff',
-      correctLevel:QRCode.CorrectLevel.M
-    });
-  } catch(e){}
-}
-
-function copyLink(e){
-  navigator.clipboard.writeText(getSurveyURL()).then(()=>{
-    const b=e.target;b.textContent='✓ Kopiert';
-    setTimeout(()=>b.textContent='Kopieren',2000);
-  });
-}
-
-/* ════════════════════════════════════════
-   SURVEY LOGIC
-════════════════════════════════════════ */
-function sl(i,v){document.getElementById('v'+i).textContent=v;document.getElementById('r'+i).textContent=v;}
-function inp(i){
-  const val=document.getElementById('t'+i).value.trim().length>0;
-  document.getElementById('pp'+i).classList.toggle('done',val);
-  // clear error highlight as soon as user types
-  document.getElementById('t'+i).style.borderColor='';
-  const err=document.getElementById('terr'+i);
-  if(err) err.style.display='none';
-}
-
-async function submitSurvey(){
-  // Validate all 4 text fields are filled
-  let valid=true;
-  for(let i=0;i<4;i++){
-    const ta=document.getElementById('t'+i);
-    const err=document.getElementById('terr'+i);
-    if(!ta.value.trim()){
-      ta.style.borderColor='#c8503a';
-      ta.style.background='#fdf6f4';
-      if(err) err.style.display='block';
-      valid=false;
-    }
-  }
-  if(!valid){
-    // scroll to first empty field
-    const first=[0,1,2,3].find(i=>!document.getElementById('t'+i).value.trim());
-    if(first!==undefined) document.getElementById('t'+first).scrollIntoView({behavior:'smooth',block:'center'});
-    return;
-  }
-
-  const btn=document.getElementById('submit-btn');
-  btn.disabled=true;btn.textContent='Wird gespeichert…';
-  const row={
-    score_wirtschaftlichkeit: +document.getElementById('s0').value,
-    score_oekologie:          +document.getElementById('s1').value,
-    score_image:              +document.getElementById('s2').value,
-    score_technik:            +document.getElementById('s3').value,
-    text_wirtschaftlichkeit:  document.getElementById('t0').value.trim(),
-    text_oekologie:           document.getElementById('t1').value.trim(),
-    text_image:               document.getElementById('t2').value.trim(),
-    text_technik:             document.getElementById('t3').value.trim(),
-  };
-  try {
-    await dbInsert(row);
-    sv('view-thanks');
-  } catch(err) {
-    alert('Fehler beim Speichern. Bitte erneut versuchen.\n\n'+err.message);
-  } finally {
-    btn.disabled=false;btn.textContent='Feedback absenden';
-  }
-}
-
-function resetSurvey(){
-  for(let i=0;i<4;i++){
-    document.getElementById('t'+i).value='';
-    document.getElementById('t'+i).style.borderColor='';
-    document.getElementById('t'+i).style.background='';
-    const err=document.getElementById('terr'+i);
-    if(err) err.style.display='none';
-    document.getElementById('s'+i).value=5;
-    document.getElementById('v'+i).textContent=5;
-    document.getElementById('r'+i).textContent=5;
-    document.getElementById('pp'+i).classList.remove('done');
-  }
-  sv('view-welcome');
-}
-
-/* ════════════════════════════════════════
-   ADMIN
-════════════════════════════════════════ */
-const ADMIN_PW = 'lindner2026';
-
-function login(){
-  const pw=document.getElementById('pw').value;
-  document.getElementById('pw-err').style.display='none';
-  if(pw===ADMIN_PW){
-    document.getElementById('pw').value='';
-    document.getElementById('login-dash-btn').style.display='block';
-    sv('view-admin-dash');loadAndRender();
-  } else document.getElementById('pw-err').style.display='block';
-}
-
-function swt(n,btn){
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
-  document.getElementById('tp-'+n).classList.add('on');
-}
-
-/* convert DB rows → internal format */
-function parseRows(rows){
-  return rows.map(r=>({
-    id: r.id,
-    ts: new Date(r.created_at).toLocaleString('de-DE',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'}),
-    scores:[r.score_wirtschaftlichkeit,r.score_oekologie,r.score_image,r.score_technik],
-    texts:[r.text_wirtschaftlichkeit||'(keine Angabe)',r.text_oekologie||'(keine Angabe)',r.text_image||'(keine Angabe)',r.text_technik||'(keine Angabe)']
-  }));
-}
-
-async function loadAndRender(){
-  try {
-    const rows=await dbFetch();
-    const R=parseRows(rows);
-    renderAll(R);
-    renderHome(R);
-  } catch(err){
-    console.error('DB error',err);
-  }
-}
-
-const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
-
-function renderHome(R){
-  window._lastR=R;
-  // home panel elements removed — stats only shown in full dashboard
-}
-
-function renderAll(R){
-  window._lastR=R;
-  const n=R.length;
-  document.getElementById('kn').textContent=n;
-  if(!n){
-    document.getElementById('ka').textContent='—';
-    document.getElementById('sh').innerHTML='<div class="load-row" style="font-style:italic;font-family:var(--fd)">Noch keine Antworten vorhanden.</div>';
-    document.getElementById('ah').innerHTML='';document.getElementById('uh').innerHTML='';
-    document.getElementById('stat-content').style.display='none';document.getElementById('stat-empty').style.display='flex';
-    return;
-  }
-  const avgs=S.map((_,i)=>Math.round(avg(R.map(r=>r.scores[i]))*10)/10);
-  const ov=Math.round(avg(avgs)*10)/10;
-  document.getElementById('ka').textContent=ov.toFixed(1);
-  const ti=avgs.indexOf(Math.max(...avgs)),bi=avgs.indexOf(Math.min(...avgs));
-  document.getElementById('kt').textContent=S[ti].l;document.getElementById('ktv').textContent='Ø '+avgs[ti].toFixed(1);
-  document.getElementById('kb').textContent=S[bi].l;document.getElementById('kbv').textContent='Ø '+avgs[bi].toFixed(1);
-  rScores(avgs,n,R);rAntworten(n,R);rAuswertung(avgs,n);rStatistik(avgs,n,R);
-}
-
-function rScores(avgs,n,R){
-  let h='';
-  S.forEach((s,i)=>{const pct=Math.round(avgs[i]/10*100),vals=R.map(r=>r.scores[i]);
-    h+=`<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div><div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);margin-bottom:3px">0${i+1} · ${s.s}</div><div class="rc-title">${s.l}</div><div class="rc-sub">${n} Stimmen · Min ${Math.min(...vals)} · Max ${Math.max(...vals)}</div></div><div style="text-align:right"><div class="rc-num" style="color:${s.c}">${avgs[i].toFixed(1)}</div><div class="rc-numl">Ø von 10</div></div></div><div class="rc-bar"><div class="rc-track"><div class="rc-fill" style="width:${pct}%;background:${s.c}"></div></div><div class="rc-scale"><span>1</span><span>5</span><span>10</span></div></div></div>`;});
-  document.getElementById('sh').innerHTML=h;
-}
-function rAntworten(n,R){
-  let h='';
-  S.forEach((s,i)=>{
-    h+=`<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div class="rc-title">${s.l}</div><div style="font-size:11px;color:var(--t3)">${n} Antworten</div></div><div class="rc-list">`;
-    R.forEach((r,ri)=>{
-      h+=`<div class="rc-item rc-item-wrap">
-        <div class="ri-n">0${ri+1}</div>
-        <div>
-          <div class="ri-text">${r.texts[i]}</div>
-          <div class="ri-meta">Score ${r.scores[i]}/10 · ${r.ts}</div>
-        </div>
-        <button class="btn-del-row" onclick="confirmDeleteOne(${r.id},${ri+1})">Löschen</button>
-      </div>`;
-    });
-    h+=`</div></div>`;
-  });
-  document.getElementById('ah').innerHTML=h;
-}
-function interp(l,a,n){
-  if(a>=8)return`<em>${l}</em> erzielt mit ${a.toFixed(1)} einen starken Durchschnitt über ${n} Stimmen. Dieser Bereich kann offensiv kommuniziert werden.`;
-  if(a>=6)return`<em>${l}</em> wird mit ${a.toFixed(1)} solide bewertet. Gezielte Maßnahmen können diesen Bereich zur klaren Stärke entwickeln.`;
-  if(a>=4)return`<em>${l}</em> zeigt mit ${a.toFixed(1)} ein gemischtes Bild. Die qualitativen Antworten enthalten konkrete Hinweise auf Hindernisse.`;
-  return`<em>${l}</em> signalisiert mit ${a.toFixed(1)} dringenden Handlungsbedarf. Kommentare sollten systematisch ausgewertet werden.`;
-}
-function rAuswertung(avgs,n){
-  let h='';
-  S.forEach((s,i)=>{h+=`<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div class="rc-title">${s.l}</div><div class="rc-num" style="color:${s.c}">${avgs[i].toFixed(1)}</div></div><div class="rc-interp"><div class="ri-badge">Interpretation</div><div class="ri-body">${interp(s.l,avgs[i],n)}</div></div></div>`;});
-  const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
-  const ov=avg(avgs);const sent=ov>=7?'sehr positiv':ov>=5?'überwiegend positiv':'gemischt';
-  h+=`<div class="cbox"><div class="cbox-eyebrow">Gesamtfazit · Nachhaltiges Bauen</div><div class="cbox-h">Summit 2026 — Ergebnis</div><div class="cbox-p">Die ${n} Teilnehmer bewerten Zirkularität insgesamt ${sent} (Ø ${ov.toFixed(1)}/10). Stärkstes Handlungsfeld: <em>${S[sorted[0].i].l}</em>. Höchster Handlungsbedarf: <em>${S[sorted[sorted.length-1].i].l}</em>.</div><div class="cbox-grid">${sorted.map((x,r)=>`<div class="cg-cell"><div class="cg-l">${['Stärke','Potenzial','Aufmerksamkeit','Priorität'][r]}</div><div class="cg-v">${S[x.i].l}</div><div class="cg-s">Ø ${x.a.toFixed(1)} / 10</div></div>`).join('')}</div></div>`;
-  document.getElementById('uh').innerHTML=h;
-}
-function rStatistik(avgs,n,R){
-  document.getElementById('stat-empty').style.display='none';
-  document.getElementById('stat-content').style.display='block';
-  document.getElementById('dc-tot').textContent=avg(avgs).toFixed(1);
-  const dc=document.getElementById('donut-canvas').getContext('2d');
-  const tot=avgs.reduce((a,b)=>a+b,0);dc.clearRect(0,0,200,200);
-  let ang=-Math.PI/2;
-  avgs.forEach((v,i)=>{const sl=(v/tot)*Math.PI*2;dc.beginPath();dc.moveTo(100,100);dc.arc(100,100,88,ang,ang+sl);dc.closePath();dc.fillStyle=S[i].c;dc.fill();ang+=sl;});
-  dc.beginPath();dc.arc(100,100,58,0,Math.PI*2);dc.fillStyle='#fff';dc.fill();
-  document.getElementById('donut-legend').innerHTML=S.map((s,i)=>`<div class="dl-row"><div class="dl-dot" style="background:${s.c}"></div><span class="dl-label">${s.l}</span><span class="dl-val">${avgs[i].toFixed(1)}</span></div>`).join('');
-  const rc=document.getElementById('radar-canvas').getContext('2d');rc.clearRect(0,0,240,220);
-  const rcx=120,rcy=112,maxR=80,lbs=['Wirtschaft','Ökologie','Image','Technik'];
-  const a4=[0,1,2,3].map(i=>-Math.PI/2+(i/4)*Math.PI*2);
-  [2,4,6,8,10].forEach(v=>{rc.beginPath();a4.forEach((a,i)=>{const r=(v/10)*maxR;i===0?rc.moveTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)):rc.lineTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a));});rc.closePath();rc.strokeStyle='rgba(28,26,22,.07)';rc.lineWidth=1;rc.stroke();rc.fillStyle='rgba(154,144,128,.6)';rc.font='9px Outfit,sans-serif';rc.textAlign='center';rc.fillText(v,rcx+3,rcy-(v/10)*maxR+3);});
-  a4.forEach(a=>{rc.beginPath();rc.moveTo(rcx,rcy);rc.lineTo(rcx+maxR*Math.cos(a),rcy+maxR*Math.sin(a));rc.strokeStyle='rgba(28,26,22,.08)';rc.lineWidth=1;rc.stroke();});
-  rc.beginPath();a4.forEach((a,i)=>{const r=(avgs[i]/10)*maxR;i===0?rc.moveTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)):rc.lineTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a));});rc.closePath();rc.fillStyle='rgba(83,122,88,.18)';rc.fill();rc.strokeStyle='#537a58';rc.lineWidth=2;rc.stroke();
-  a4.forEach((a,i)=>{const r=(avgs[i]/10)*maxR,x=rcx+r*Math.cos(a),y=rcy+r*Math.sin(a);rc.beginPath();rc.arc(x,y,4,0,Math.PI*2);rc.fillStyle=S[i].c;rc.fill();const lx=rcx+(maxR+18)*Math.cos(a),ly=rcy+(maxR+18)*Math.sin(a);rc.fillStyle='#5a5548';rc.font='10px Outfit,sans-serif';rc.textAlign=lx<rcx-5?'right':lx>rcx+5?'left':'center';rc.fillText(lbs[i],lx,ly+3);});
-  const hc=document.getElementById('hist-canvas'),ctx=hc.getContext('2d');
-  const dw=hc.offsetWidth||700;hc.width=dw*devicePixelRatio;hc.height=140*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);ctx.clearRect(0,0,dw,140);
-  const freq=Array(10).fill(0);R.forEach(r=>r.scores.forEach(s=>freq[s-1]++));
-  const mxF=Math.max(...freq,1),pad={l:28,r:12,t:10,b:28},cH=140-pad.t-pad.b,colW=(dw-pad.l-pad.r)/10,bw=colW*.65,gp=colW*.35;
-  for(let i=0;i<10;i++){const x=pad.l+i*colW+gp/2,bH=(freq[i]/mxF)*cH,y=pad.t+cH-bH;ctx.fillStyle='rgba(83,122,88,.72)';ctx.beginPath();const rr=3;ctx.moveTo(x+rr,y);ctx.lineTo(x+bw-rr,y);ctx.quadraticCurveTo(x+bw,y,x+bw,y+rr);ctx.lineTo(x+bw,y+bH);ctx.lineTo(x,y+bH);ctx.lineTo(x,y+rr);ctx.quadraticCurveTo(x,y,x+rr,y);ctx.closePath();ctx.fill();if(freq[i]>0){ctx.fillStyle='#537a58';ctx.font='500 10px Outfit,sans-serif';ctx.textAlign='center';ctx.fillText(freq[i],x+bw/2,y-4);}ctx.fillStyle='#9a9080';ctx.font='10px Outfit,sans-serif';ctx.textAlign='center';ctx.fillText(i+1,x+bw/2,140-pad.b+13);}
-  ctx.beginPath();ctx.moveTo(pad.l,pad.t+cH);ctx.lineTo(dw-pad.r,pad.t+cH);ctx.strokeStyle='rgba(28,26,22,.1)';ctx.lineWidth=1;ctx.stroke();
-  document.getElementById('spread-bars').innerHTML=S.map((s,i)=>{const vals=R.map(r=>r.scores[i]),mn=Math.min(...vals),mx=Math.max(...vals),av=avgs[i];return`<div class="spread-row"><div class="spread-meta"><span class="spread-name">${s.l}</span><span class="spread-nums">Min ${mn} · Ø ${av.toFixed(1)} · Max ${mx}</span></div><div class="spread-track"><div class="spread-range" style="left:${((mn-1)/9)*100}%;width:${((mx-mn)/9)*100}%;background:${s.c}"></div><div class="spread-avg-line" style="left:${((av-1)/9)*100}%;background:${s.c}"></div></div></div>`;}).join('');
-}
-
-
-/* ════════════════════════════════════════
-   INIT
-════════════════════════════════════════ */
-(function init(){
-  const p=new URLSearchParams(window.location.search);
-  if(p.get('view')==='survey'){
-    sv('view-welcome');
-  } else {
-    sv('view-admin-home');
-    initQR();
-  }
-})();
-</script>
-
-<!-- ══════════════ CONFIRM MODAL ══════════════ -->
-<div id="confirm-overlay" style="display:none;position:fixed;inset:0;background:rgba(28,26,22,.55);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeConfirm()">
+<!-- ══ CONFIRM MODAL ══ -->
+<div id="confirm-overlay" style="display:none;position:fixed;inset:0;background:rgba(28,26,22,.55);z-index:999;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeConfirm()">
   <div class="confirm-box">
     <div class="confirm-icon">🗑</div>
     <h3 class="confirm-h" id="confirm-h">Löschen?</h3>
@@ -903,449 +607,450 @@ function rStatistik(avgs,n,R){
 </div>
 
 <script>
-/* ════════════════════════════════════════
-   DELETE FUNCTIONS
-════════════════════════════════════════ */
-async function dbDelete(id){
-  const res=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?id=eq.${id}`,{
-    method:'DELETE',
-    headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}
+/* ══ SECTION CONFIG — 6 Bereiche ══ */
+const S = [
+  { l:'Zeit',                              s:'Zukunftsperspektive', c:'#537a58', scaleMin:'Sehr unrealistisch', scaleMax:'Sehr realistisch' },
+  { l:'Image & Kommunikation',             s:'Markenbotschaft',     c:'#6b9450', scaleMin:'Kaum relevant',      scaleMax:'Sehr entscheidend' },
+  { l:'Wirtschaftlichkeit (Kosten-Nutzen)',s:'Anreizmodelle',       c:'#9b6b4a', scaleMin:'Gering',             scaleMax:'Sehr hoch' },
+  { l:'Ökologie & Nachhaltigkeit',         s:'CO₂ & Ressourcen',   c:'#c49a3c', scaleMin:'Kaum',               scaleMax:'Sehr stark' },
+  { l:'Technische Umsetzung',              s:'Prozessoptimierung',  c:'#5a7a9a', scaleMin:'Nicht vorbereitet',  scaleMax:'Vollständig bereit' },
+  { l:'Markt & Preisgestaltung',           s:'Zahlungsbereitschaft',c:'#7a5a9a', scaleMin:'Sehr gering',        scaleMax:'Sehr hoch' }
+];
+const N = S.length; // 6
+
+/* ══ SUPABASE ══ */
+async function dbInsert(row) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}`, {
+    method: 'POST',
+    headers: { 'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`,'Prefer':'return=minimal' },
+    body: JSON.stringify(row)
   });
-  if(!res.ok) throw new Error(await res.text());
+  if (!res.ok) throw new Error(await res.text());
 }
-
-async function dbDeleteAll(){
-  const res=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?id=gte.0`,{
-    method:'DELETE',
-    headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}
+async function dbFetch() {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?select=*&order=created_at.asc`, {
+    headers: { 'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}` }
   });
-  if(!res.ok) throw new Error(await res.text());
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+async function dbDelete(id) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?id=eq.${id}`, {
+    method:'DELETE', headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}
+  });
+  if (!res.ok) throw new Error(await res.text());
+}
+async function dbDeleteAll() {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}?id=gte.0`, {
+    method:'DELETE', headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}
+  });
+  if (!res.ok) throw new Error(await res.text());
 }
 
-let _confirmCallback=null;
-
-function showConfirm(title, msg, callback){
-  document.getElementById('confirm-h').textContent=title;
-  document.getElementById('confirm-p').textContent=msg;
-  _confirmCallback=callback;
-  const ov=document.getElementById('confirm-overlay');
-  ov.style.display='flex';
+/* ══ ROUTING ══ */
+function sv(id) {
+  document.querySelectorAll('.view').forEach(v=>{v.style.display='none';v.classList.remove('active');});
+  const el = document.getElementById(id);
+  el.style.display = 'block'; el.classList.add('active');
+}
+function getSurveyURL() { return window.location.href.split('?')[0]+'?view=survey'; }
+function initQR() {
+  const url = getSurveyURL();
+  document.getElementById('qr-url-text').textContent = url;
+  document.getElementById('qr-code-el').innerHTML = '';
+  try {
+    new QRCode(document.getElementById('qr-code-el'),{text:url,width:160,height:160,colorDark:'#2e4a2e',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+  } catch(e){}
+}
+function copyLink(e) {
+  navigator.clipboard.writeText(getSurveyURL()).then(()=>{
+    const b=e.target; b.textContent='✓ Kopiert';
+    setTimeout(()=>b.textContent='Kopieren',2000);
+  });
 }
 
-function closeConfirm(){
-  document.getElementById('confirm-overlay').style.display='none';
-  _confirmCallback=null;
+/* ══ SURVEY LOGIC ══ */
+function sl(i, v) { document.getElementById('v'+i).textContent=v; document.getElementById('r'+i).textContent=v; }
+function inp(i) {
+  const val = document.getElementById('t'+i).value.trim().length > 0;
+  document.getElementById('pp'+i).classList.toggle('done', val);
+  document.getElementById('t'+i).style.borderColor = '';
+  const err = document.getElementById('terr'+i);
+  if (err) err.style.display = 'none';
 }
 
-document.getElementById('confirm-action-btn').onclick=async function(){
-  if(_confirmCallback){
-    this.textContent='Wird gelöscht…';this.disabled=true;
-    try{ await _confirmCallback(); }
-    catch(e){ alert('Fehler: '+e.message); }
-    finally{ this.textContent='Löschen';this.disabled=false; }
+async function submitSurvey() {
+  let valid = true;
+  for (let i = 0; i < N; i++) {
+    const ta = document.getElementById('t'+i);
+    const err = document.getElementById('terr'+i);
+    if (!ta.value.trim()) {
+      ta.style.borderColor = '#c8503a';
+      ta.style.background = '#fdf6f4';
+      if (err) err.style.display = 'block';
+      valid = false;
+    }
   }
+  if (!valid) {
+    const first = [0,1,2,3,4,5].find(i => !document.getElementById('t'+i).value.trim());
+    if (first !== undefined) document.getElementById('t'+first).scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Wird gespeichert…';
+  // DB columns: score_zeit, score_image, score_wirtschaftlichkeit, score_oekologie, score_technik, score_markt
+  // and text_ equivalents
+  const keys = ['zeit','image','wirtschaftlichkeit','oekologie','technik','markt'];
+  const row = {};
+  keys.forEach((k,i) => {
+    row[`score_${k}`] = +document.getElementById('s'+i).value;
+    row[`text_${k}`]  = document.getElementById('t'+i).value.trim();
+  });
+  try {
+    await dbInsert(row);
+    sv('view-thanks');
+  } catch(err) {
+    alert('Fehler beim Speichern. Bitte erneut versuchen.\n\n'+err.message);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Feedback absenden';
+  }
+}
+
+function resetSurvey() {
+  for (let i = 0; i < N; i++) {
+    document.getElementById('t'+i).value = '';
+    document.getElementById('t'+i).style.borderColor = '';
+    document.getElementById('t'+i).style.background = '';
+    const err = document.getElementById('terr'+i);
+    if (err) err.style.display = 'none';
+    document.getElementById('s'+i).value = 5;
+    document.getElementById('v'+i).textContent = 5;
+    document.getElementById('r'+i).textContent = 5;
+    document.getElementById('pp'+i).classList.remove('done');
+  }
+  sv('view-welcome');
+}
+
+/* ══ ADMIN ══ */
+const ADMIN_PW = 'lindner2026';
+function login() {
+  const pw = document.getElementById('pw').value;
+  document.getElementById('pw-err').style.display = 'none';
+  if (pw === ADMIN_PW) {
+    document.getElementById('pw').value = '';
+    sv('view-admin-dash'); loadAndRender();
+  } else document.getElementById('pw-err').style.display = 'block';
+}
+function swt(n, btn) {
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on')); btn.classList.add('on');
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
+  document.getElementById('tp-'+n).classList.add('on');
+}
+
+const keys6 = ['zeit','image','wirtschaftlichkeit','oekologie','technik','markt'];
+
+function parseRows(rows) {
+  return rows.map(r => ({
+    id: r.id,
+    ts: new Date(r.created_at).toLocaleString('de-DE',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'}),
+    scores: keys6.map(k => r[`score_${k}`] || 0),
+    texts:  keys6.map(k => r[`text_${k}`]  || '(keine Angabe)')
+  }));
+}
+
+async function loadAndRender() {
+  try { const rows = await dbFetch(); const R = parseRows(rows); renderAll(R); } catch(err) { console.error('DB error',err); }
+}
+
+const avg = a => a.reduce((x,y)=>x+y,0)/a.length;
+
+function renderAll(R) {
+  window._lastR = R;
+  const n = R.length;
+  document.getElementById('kn').textContent = n;
+  if (!n) {
+    document.getElementById('ka').textContent = '—';
+    document.getElementById('sh').innerHTML = '<div class="load-row" style="font-style:italic;font-family:var(--fd)">Noch keine Antworten vorhanden.</div>';
+    document.getElementById('ah').innerHTML = ''; document.getElementById('uh').innerHTML = '';
+    document.getElementById('stat-content').style.display = 'none'; document.getElementById('stat-empty').style.display = 'flex';
+    return;
+  }
+  const avgs = S.map((_,i) => Math.round(avg(R.map(r=>r.scores[i]))*10)/10);
+  const ov = Math.round(avg(avgs)*10)/10;
+  document.getElementById('ka').textContent = ov.toFixed(1);
+  const ti = avgs.indexOf(Math.max(...avgs)), bi = avgs.indexOf(Math.min(...avgs));
+  document.getElementById('kt').textContent = S[ti].l; document.getElementById('ktv').textContent = 'Ø '+avgs[ti].toFixed(1);
+  document.getElementById('kb').textContent = S[bi].l; document.getElementById('kbv').textContent = 'Ø '+avgs[bi].toFixed(1);
+  rScores(avgs,n,R); rAntworten(n,R); rAuswertung(avgs,n); rStatistik(avgs,n,R);
+}
+
+function rScores(avgs,n,R) {
+  let h = '';
+  S.forEach((s,i) => {
+    const pct = Math.round(avgs[i]/10*100), vals = R.map(r=>r.scores[i]);
+    h += `<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div><div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);margin-bottom:3px">0${i+1} · ${s.s}</div><div class="rc-title">${s.l}</div><div class="rc-sub">${n} Stimmen · Min ${Math.min(...vals)} · Max ${Math.max(...vals)}</div></div><div style="text-align:right"><div class="rc-num" style="color:${s.c}">${avgs[i].toFixed(1)}</div><div class="rc-numl">Ø von 10</div></div></div><div class="rc-bar"><div class="rc-track"><div class="rc-fill" style="width:${pct}%;background:${s.c}"></div></div><div class="rc-scale"><span>1 – ${s.scaleMin}</span><span>10 – ${s.scaleMax}</span></div></div></div>`;
+  });
+  document.getElementById('sh').innerHTML = h;
+}
+
+function rAntworten(n,R) {
+  let h = '';
+  S.forEach((s,i) => {
+    h += `<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div class="rc-title">${s.l}</div><div style="font-size:11px;color:var(--t3)">${n} Antworten</div></div><div class="rc-list">`;
+    R.forEach((r,ri) => {
+      h += `<div class="rc-item rc-item-wrap"><div class="ri-n">0${ri+1}</div><div><div class="ri-text">${r.texts[i]}</div><div class="ri-meta">Score ${r.scores[i]}/10 · ${r.ts}</div></div><button class="btn-del-row" onclick="confirmDeleteOne(${r.id},${ri+1})">Löschen</button></div>`;
+    });
+    h += `</div></div>`;
+  });
+  document.getElementById('ah').innerHTML = h;
+}
+
+function interp(l,a,n) {
+  if (a>=8) return `<em>${l}</em> erzielt mit ${a.toFixed(1)} einen starken Durchschnitt über ${n} Stimmen. Dieser Bereich kann offensiv kommuniziert werden.`;
+  if (a>=6) return `<em>${l}</em> wird mit ${a.toFixed(1)} solide bewertet. Gezielte Maßnahmen können diesen Bereich zur klaren Stärke entwickeln.`;
+  if (a>=4) return `<em>${l}</em> zeigt mit ${a.toFixed(1)} ein gemischtes Bild. Die qualitativen Antworten enthalten konkrete Hinweise auf Hindernisse.`;
+  return `<em>${l}</em> signalisiert mit ${a.toFixed(1)} dringenden Handlungsbedarf. Kommentare sollten systematisch ausgewertet werden.`;
+}
+
+function rAuswertung(avgs,n) {
+  let h = '';
+  S.forEach((s,i) => {
+    h += `<div class="rc"><div class="rc-head" style="--rc-color:${s.c}"><div class="rc-title">${s.l}</div><div class="rc-num" style="color:${s.c}">${avgs[i].toFixed(1)}</div></div><div class="rc-interp"><div class="ri-badge">Interpretation</div><div class="ri-body">${interp(s.l,avgs[i],n)}</div></div></div>`;
+  });
+  const sorted = [...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
+  const ov = avg(avgs); const sent = ov>=7?'sehr positiv':ov>=5?'überwiegend positiv':'gemischt';
+  h += `<div class="cbox"><div class="cbox-eyebrow">Gesamtfazit · Nachhaltiges Bauen</div><div class="cbox-h">Summit 2026 — Ergebnis</div><div class="cbox-p">Die ${n} Teilnehmer bewerten Zirkularität insgesamt ${sent} (Ø ${ov.toFixed(1)}/10). Stärkstes Handlungsfeld: <em>${S[sorted[0].i].l}</em>. Höchster Handlungsbedarf: <em>${S[sorted[sorted.length-1].i].l}</em>.</div><div class="cbox-grid">${sorted.map((x,r)=>`<div class="cg-cell"><div class="cg-l">${['Stärke','Potenzial','Aufmerksamkeit','Fokus','Reserve','Priorität'][r]}</div><div class="cg-v">${S[x.i].l}</div><div class="cg-s">Ø ${x.a.toFixed(1)} / 10</div></div>`).join('')}</div></div>`;
+  document.getElementById('uh').innerHTML = h;
+}
+
+function rStatistik(avgs,n,R) {
+  document.getElementById('stat-empty').style.display = 'none';
+  document.getElementById('stat-content').style.display = 'block';
+  document.getElementById('dc-tot').textContent = avg(avgs).toFixed(1);
+
+  // Donut
+  const dc = document.getElementById('donut-canvas').getContext('2d');
+  const tot = avgs.reduce((a,b)=>a+b,0); dc.clearRect(0,0,200,200);
+  let ang = -Math.PI/2;
+  avgs.forEach((v,i)=>{ const sl=(v/tot)*Math.PI*2; dc.beginPath(); dc.moveTo(100,100); dc.arc(100,100,88,ang,ang+sl); dc.closePath(); dc.fillStyle=S[i].c; dc.fill(); ang+=sl; });
+  dc.beginPath(); dc.arc(100,100,58,0,Math.PI*2); dc.fillStyle='#fff'; dc.fill();
+  document.getElementById('donut-legend').innerHTML = S.map((s,i)=>`<div class="dl-row"><div class="dl-dot" style="background:${s.c}"></div><span class="dl-label">${s.l}</span><span class="dl-val">${avgs[i].toFixed(1)}</span></div>`).join('');
+
+  // Radar (hexagon for 6 sections)
+  const rc = document.getElementById('radar-canvas').getContext('2d'); rc.clearRect(0,0,240,240);
+  const rcx=120, rcy=120, maxR=85;
+  const a6 = [0,1,2,3,4,5].map(i => -Math.PI/2 + (i/6)*Math.PI*2);
+  const lbs = ['Zeit','Image','Wirtsch.','Ökologie','Technik','Markt'];
+  [2,4,6,8,10].forEach(v => {
+    rc.beginPath();
+    a6.forEach((a,i)=>{ const r=(v/10)*maxR; i===0?rc.moveTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)):rc.lineTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)); });
+    rc.closePath(); rc.strokeStyle='rgba(28,26,22,.07)'; rc.lineWidth=1; rc.stroke();
+    rc.fillStyle='rgba(154,144,128,.6)'; rc.font='9px Outfit,sans-serif'; rc.textAlign='center';
+    rc.fillText(v, rcx+3, rcy-(v/10)*maxR+3);
+  });
+  a6.forEach(a=>{ rc.beginPath(); rc.moveTo(rcx,rcy); rc.lineTo(rcx+maxR*Math.cos(a),rcy+maxR*Math.sin(a)); rc.strokeStyle='rgba(28,26,22,.08)'; rc.lineWidth=1; rc.stroke(); });
+  rc.beginPath();
+  a6.forEach((a,i)=>{ const r=(avgs[i]/10)*maxR; i===0?rc.moveTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)):rc.lineTo(rcx+r*Math.cos(a),rcy+r*Math.sin(a)); });
+  rc.closePath(); rc.fillStyle='rgba(83,122,88,.18)'; rc.fill(); rc.strokeStyle='#537a58'; rc.lineWidth=2; rc.stroke();
+  a6.forEach((a,i)=>{ const r=(avgs[i]/10)*maxR,x=rcx+r*Math.cos(a),y=rcy+r*Math.sin(a); rc.beginPath(); rc.arc(x,y,4,0,Math.PI*2); rc.fillStyle=S[i].c; rc.fill(); const lx=rcx+(maxR+18)*Math.cos(a),ly=rcy+(maxR+18)*Math.sin(a); rc.fillStyle='#5a5548'; rc.font='9px Outfit,sans-serif'; rc.textAlign=lx<rcx-5?'right':lx>rcx+5?'left':'center'; rc.fillText(lbs[i],lx,ly+3); });
+
+  // Histogram
+  const hc = document.getElementById('hist-canvas'), ctx = hc.getContext('2d');
+  const dw = hc.offsetWidth||700; hc.width=dw*devicePixelRatio; hc.height=140*devicePixelRatio; ctx.scale(devicePixelRatio,devicePixelRatio); ctx.clearRect(0,0,dw,140);
+  const freq = Array(10).fill(0); R.forEach(r=>r.scores.forEach(s=>freq[s-1]++));
+  const mxF=Math.max(...freq,1),pad={l:28,r:12,t:10,b:28},cH=140-pad.t-pad.b,colW=(dw-pad.l-pad.r)/10,bw=colW*.65,gp=colW*.35;
+  for(let i=0;i<10;i++){const x=pad.l+i*colW+gp/2,bH=(freq[i]/mxF)*cH,y=pad.t+cH-bH; ctx.fillStyle='rgba(83,122,88,.72)'; ctx.beginPath(); const rr=3; ctx.moveTo(x+rr,y); ctx.lineTo(x+bw-rr,y); ctx.quadraticCurveTo(x+bw,y,x+bw,y+rr); ctx.lineTo(x+bw,y+bH); ctx.lineTo(x,y+bH); ctx.lineTo(x,y+rr); ctx.quadraticCurveTo(x,y,x+rr,y); ctx.closePath(); ctx.fill(); if(freq[i]>0){ctx.fillStyle='#537a58';ctx.font='500 10px Outfit,sans-serif';ctx.textAlign='center';ctx.fillText(freq[i],x+bw/2,y-4);} ctx.fillStyle='#9a9080'; ctx.font='10px Outfit,sans-serif'; ctx.textAlign='center'; ctx.fillText(i+1,x+bw/2,140-pad.b+13);}
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t+cH); ctx.lineTo(dw-pad.r,pad.t+cH); ctx.strokeStyle='rgba(28,26,22,.1)'; ctx.lineWidth=1; ctx.stroke();
+
+  // Spread bars
+  document.getElementById('spread-bars').innerHTML = S.map((s,i)=>{
+    const vals=R.map(r=>r.scores[i]),mn=Math.min(...vals),mx=Math.max(...vals),av=avgs[i];
+    return `<div class="spread-row"><div class="spread-meta"><span class="spread-name">${s.l}</span><span class="spread-nums">Min ${mn} · Ø ${av.toFixed(1)} · Max ${mx}</span></div><div class="spread-track"><div class="spread-range" style="left:${((mn-1)/9)*100}%;width:${((mx-mn)/9)*100}%;background:${s.c}"></div><div class="spread-avg-line" style="left:${((av-1)/9)*100}%;background:${s.c}"></div></div></div>`;
+  }).join('');
+}
+
+/* ══ CONFIRM MODAL ══ */
+let _confirmCallback = null;
+function showConfirm(title,msg,callback) {
+  document.getElementById('confirm-h').textContent=title; document.getElementById('confirm-p').textContent=msg;
+  _confirmCallback=callback; document.getElementById('confirm-overlay').style.display='flex';
+}
+function closeConfirm() { document.getElementById('confirm-overlay').style.display='none'; _confirmCallback=null; }
+document.getElementById('confirm-action-btn').onclick = async function() {
+  if(_confirmCallback){this.textContent='Wird gelöscht…';this.disabled=true;try{await _confirmCallback();}catch(e){alert('Fehler: '+e.message);}finally{this.textContent='Löschen';this.disabled=false;}}
   closeConfirm();
 };
+function confirmDeleteAll() { showConfirm('Alle Antworten löschen?','Alle gespeicherten Feedback-Einträge werden dauerhaft gelöscht.',async()=>{await dbDeleteAll();await loadAndRender();}); }
+function confirmDeleteOne(id,num) { showConfirm(`Eintrag #${num} löschen?`,'Dieser Eintrag wird dauerhaft aus der Datenbank entfernt.',async()=>{await dbDelete(id);await loadAndRender();}); }
 
-function confirmDeleteAll(){
-  showConfirm(
-    'Alle Antworten löschen?',
-    'Alle gespeicherten Feedback-Einträge werden dauerhaft gelöscht. Ideal vor dem echten Event, um Testdaten zu entfernen.',
-    async()=>{ await dbDeleteAll(); await loadAndRender(); }
-  );
-}
-
-function confirmDeleteOne(id, num){
-  showConfirm(
-    `Eintrag #${num} löschen?`,
-    'Dieser einzelne Feedback-Eintrag wird dauerhaft aus der Datenbank entfernt.',
-    async()=>{ await dbDelete(id); await loadAndRender(); }
-  );
-}
-
-/* ════════════════════════════════════════
-   EXCEL EXPORT
-════════════════════════════════════════ */
-function exportExcel(){
-  if(!window._lastR || !window._lastR.length){ alert('Keine Daten zum Exportieren.'); return; }
+/* ══ EXCEL EXPORT ══ */
+function exportExcel() {
+  if(!window._lastR||!window._lastR.length){alert('Keine Daten zum Exportieren.');return;}
   const R=window._lastR;
   const avgs=S.map((_,i)=>+(avg(R.map(r=>r.scores[i])).toFixed(1)));
   const wb=XLSX.utils.book_new();
-
-  /* ── Sheet 1: Alle Antworten ── */
-  const headers=['#','Datum','Score Wirtschaftlichkeit','Score Ökologie','Score Image','Score Technik','Ø Score','Antwort Wirtschaftlichkeit','Antwort Ökologie','Antwort Image','Antwort Technik'];
-  const rows=R.map((r,i)=>[
-    i+1, r.ts,
-    r.scores[0],r.scores[1],r.scores[2],r.scores[3],
-    +(avg(r.scores).toFixed(1)),
-    r.texts[0],r.texts[1],r.texts[2],r.texts[3]
-  ]);
+  const colLabels=S.map(s=>s.l);
+  const headers=['#','Datum',...colLabels.map(l=>'Score: '+l),'Ø Score',...colLabels.map(l=>'Antwort: '+l)];
+  const rows=R.map((r,i)=>[i+1,r.ts,...r.scores,+(avg(r.scores).toFixed(1)),...r.texts]);
   const ws1=XLSX.utils.aoa_to_sheet([headers,...rows]);
-
-  // Column widths
-  ws1['!cols']=[{wch:4},{wch:14},{wch:22},{wch:18},{wch:16},{wch:18},{wch:10},{wch:45},{wch:45},{wch:45},{wch:45}];
-
-  // Style header row — dark forest green bg, white text
-  const headerStyle={fill:{fgColor:{rgb:'2E4A2E'}},font:{color:{rgb:'FFFFFF'},bold:true,sz:11},alignment:{horizontal:'center',vertical:'center',wrapText:true}};
-  headers.forEach((_,ci)=>{
-    const cell=XLSX.utils.encode_cell({r:0,c:ci});
-    if(!ws1[cell]) ws1[cell]={v:headers[ci],t:'s'};
-    ws1[cell].s=headerStyle;
-  });
-
-  // Score cells — colour-coded by value
-  const scoreColors=['537A58','6B9450','9B6B4A','C49A3C'];
-  rows.forEach((row,ri)=>{
-    // score columns (cols 2-5)
-    [0,1,2,3].forEach(si=>{
-      const cell=XLSX.utils.encode_cell({r:ri+1,c:2+si});
-      const val=row[2+si];
-      const bg=val>=8?'D4EDD4':val>=6?'EAF3DE':val>=4?'FFF3CD':'FDDEDE';
-      if(ws1[cell]){ws1[cell].s={fill:{fgColor:{rgb:bg}},font:{bold:true,color:{rgb:scoreColors[si]}},alignment:{horizontal:'center'}};}
-    });
-    // avg score col
-    const avgCell=XLSX.utils.encode_cell({r:ri+1,c:6});
-    const avgVal=row[6];
-    const avgBg=avgVal>=8?'C8F0C8':avgVal>=6?'E0F0D0':avgVal>=4?'FFF0C0':'FFD0D0';
-    if(ws1[avgCell]){ws1[avgCell].s={fill:{fgColor:{rgb:avgBg}},font:{bold:true},alignment:{horizontal:'center'}};}
-    // zebra rows for text columns
-    const rowBg=ri%2===0?'FAFAF7':'F4F1EB';
-    [7,8,9,10].forEach(ci=>{
-      const cell=XLSX.utils.encode_cell({r:ri+1,c:ci});
-      if(ws1[cell]){ws1[cell].s={fill:{fgColor:{rgb:rowBg}},alignment:{wrapText:true,vertical:'top'}};}
-    });
-  });
-
-  ws1['!rows']=[{hpt:24},...rows.map(()=>({hpt:60}))];
+  ws1['!cols']=[{wch:4},{wch:14},...S.map(()=>({wch:18})),{wch:10},...S.map(()=>({wch:45}))];
   XLSX.utils.book_append_sheet(wb,ws1,'Alle Antworten');
-
-  /* ── Sheet 2: Zusammenfassung ── */
-  const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
-  const summaryData=[
-    ['🌿 Zirkularität Summit 2026 — Lindner','','',''],
-    ['Auswertung Nachhaltiges Bauen','','',''],
-    ['','','',''],
-    ['Bereich','Ø Score','Bewertung','Rang'],
-    ...S.map((s,i)=>[s.l, avgs[i], avgs[i]>=8?'Stark':avgs[i]>=6?'Gut':avgs[i]>=4?'Mittel':'Schwach', sorted.findIndex(x=>x.i===i)+1]),
-    ['','','',''],
-    ['Gesamtdurchschnitt',+(avg(avgs).toFixed(1)),'',''],
-    ['Anzahl Teilnehmer',R.length,'',''],
-    ['Stärkster Bereich',S[sorted[0].i].l,'',''],
-    ['Handlungsbedarf',S[sorted[sorted.length-1].i].l,'',''],
-  ];
+  const summaryData=[['🌿 Zirkularität Summit 2026 — Lindner','',''],['Auswertung Nachhaltiges Bauen','',''],['','',''],['Bereich','Ø Score','Rang'],...S.map((s,i)=>[s.l,avgs[i],i+1]),['','',''],['Gesamtdurchschnitt',+(avg(avgs).toFixed(1)),''],['Teilnehmer',R.length,'']];
   const ws2=XLSX.utils.aoa_to_sheet(summaryData);
-  ws2['!cols']=[{wch:26},{wch:14},{wch:16},{wch:8}];
-  // Title styling
-  ['A1','A2'].forEach((addr,ti)=>{
-    if(ws2[addr]) ws2[addr].s={font:{bold:true,sz:ti===0?14:11,color:{rgb:ti===0?'2E4A2E':'537A58'}},fill:{fgColor:{rgb:ti===0?'D4E6D4':'EEF4E8'}}};
-  });
-  // Header row (row 4)
-  ['A4','B4','C4','D4'].forEach(addr=>{
-    if(ws2[addr]) ws2[addr].s={fill:{fgColor:{rgb:'2E4A2E'}},font:{color:{rgb:'FFFFFF'},bold:true},alignment:{horizontal:'center'}};
-  });
-  // Section rows (rows 5-8)
-  S.forEach((_,i)=>{
-    const row=4+i+1;
-    const scoreAddr=`B${row}`;
-    const val=avgs[i];
-    const bg=val>=8?'D4EDD4':val>=6?'EAF3DE':val>=4?'FFF3CD':'FDDEDE';
-    if(ws2[scoreAddr]) ws2[scoreAddr].s={fill:{fgColor:{rgb:bg}},font:{bold:true,color:{rgb:scoreColors[i]}},alignment:{horizontal:'center'}};
-  });
+  ws2['!cols']=[{wch:34},{wch:14},{wch:8}];
   XLSX.utils.book_append_sheet(wb,ws2,'Zusammenfassung');
-
-  /* ── Sheet 3: Scores je Bereich ── */
-  const scoreSheet=[
-    ['Teilnehmer','Wirtschaftlichkeit','Ökologie','Image','Technische Umsetzung','Durchschnitt'],
-    ...R.map((r,i)=>[`Teilnehmer ${i+1}`,...r.scores,+(avg(r.scores).toFixed(1))])
-  ];
-  const ws3=XLSX.utils.aoa_to_sheet(scoreSheet);
-  ws3['!cols']=[{wch:16},{wch:20},{wch:14},{wch:12},{wch:22},{wch:14}];
-  ['A1','B1','C1','D1','E1','F1'].forEach((addr,ci)=>{
-    if(ws3[addr]) ws3[addr].s={fill:{fgColor:{rgb:['2E4A2E','537A58','6B9450','9B6B4A','C49A3C','3D6142'][ci]}},font:{color:{rgb:'FFFFFF'},bold:true},alignment:{horizontal:'center'}};
-  });
-  XLSX.utils.book_append_sheet(wb,ws3,'Scores');
-
   XLSX.writeFile(wb,`Zirkularitaet_Summit_2026_Feedback_${new Date().toISOString().slice(0,10)}.xlsx`);
 }
 
-/* ════════════════════════════════════════
-   PDF EXPORT
-════════════════════════════════════════ */
-function exportPDF(){
-  if(!window._lastR || !window._lastR.length){ alert('Keine Daten zum Exportieren.'); return; }
+/* ══ PDF EXPORT ══ */
+function exportPDF() {
+  if(!window._lastR||!window._lastR.length){alert('Keine Daten zum Exportieren.');return;}
   const R=window._lastR;
   const {jsPDF}=window.jspdf;
   const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  const pw=210, ph=297;
-  const ml=18, mr=18, mt=0;
-  const cw=pw-ml-mr;
+  const pw=210,ph=297,ml=18,mr=18,cw=pw-ml-mr;
   let y=0;
-
-  const C={forest:[46,74,46],pine:[61,97,66],moss:[83,122,88],fern:[110,158,116],sage:[163,196,168],mist:[212,230,214],cream:[244,241,235],bg:[250,246,238],white:[255,255,255],text:[28,26,22],t2:[90,85,72],t3:[154,144,128],clay:[155,107,74],amber:[196,154,60],red:[180,60,50],scores:[[83,122,88],[107,148,80],[155,107,74],[196,154,60]]};
-
-  function rgb(c){return{r:c[0],g:c[1],b:c[2]};}
+  const C={forest:[46,74,46],pine:[61,97,66],moss:[83,122,88],sage:[163,196,168],mist:[212,230,214],bg:[250,246,238],white:[255,255,255],text:[28,26,22],t2:[90,85,72],t3:[154,144,128]};
   function setFill(c){doc.setFillColor(c[0],c[1],c[2]);}
   function setDraw(c){doc.setDrawColor(c[0],c[1],c[2]);}
   function setTxt(c){doc.setTextColor(c[0],c[1],c[2]);}
-  function setFont(sz,style='normal',family='helvetica'){doc.setFont(family,style);doc.setFontSize(sz);}
-
-  const avgs=S.map((_,i)=>+( avg(R.map(r=>r.scores[i])).toFixed(1)));
+  function setFont(sz,style='normal'){doc.setFont('helvetica',style);doc.setFontSize(sz);}
+  const avgs=S.map((_,i)=>+(avg(R.map(r=>r.scores[i])).toFixed(1)));
   const ovAvg=+(avg(avgs).toFixed(1));
   const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
   const today=new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
 
-  /* ── COVER PAGE ── */
-  // Dark forest header block
+  // Cover
   setFill(C.forest); doc.rect(0,0,pw,80,'F');
-  // Decorative circles
   setFill([61,97,66]); doc.circle(180,10,40,'F');
   setFill([46,74,46]); doc.circle(185,12,28,'F');
-  setFill([83,122,88]); doc.circle(30,75,20,'F');
-
-  // Leaf emoji text
-  setFont(28,'bold'); setTxt(C.sage);
-  doc.text('🌿',ml,28);
-  setFont(22,'bold'); setTxt(C.white);
-  doc.text('Zirkularität Summit 2026',ml+12,28);
-  setFont(13,'normal'); setTxt(C.sage);
-  doc.text('Lindner · Nachhaltiges Bauen',ml+12,36);
-
-  // Divider line
-  setDraw(C.moss); doc.setLineWidth(0.4);
-  doc.line(ml,42,pw-mr,42);
-
-  // Report title
-  setFont(10,'normal'); setTxt([163,196,168]);
-  doc.text('FEEDBACK-AUSWERTUNG',ml,52);
-  setFont(18,'bold'); setTxt(C.white);
-  doc.text('Analyse & Ergebnisbericht',ml,62);
-  setFont(9,'normal'); setTxt([163,196,168]);
-  doc.text(`Erstellt am ${today}  ·  ${R.length} Teilnehmer`,ml,71);
-
+  setFont(22,'bold'); setTxt(C.white); doc.text('Zirkularität Summit 2026',ml,28);
+  setFont(13,'normal'); setTxt(C.sage); doc.text('Lindner · Nachhaltiges Bauen',ml,36);
+  setDraw(C.moss); doc.setLineWidth(0.4); doc.line(ml,42,pw-mr,42);
+  setFont(10,'normal'); setTxt([163,196,168]); doc.text('FEEDBACK-AUSWERTUNG',ml,52);
+  setFont(18,'bold'); setTxt(C.white); doc.text('Analyse & Ergebnisbericht',ml,62);
+  setFont(9,'normal'); setTxt([163,196,168]); doc.text(`Erstellt am ${today}  ·  ${R.length} Teilnehmer`,ml,71);
   y=92;
 
-  // KPI cards row
+  // KPI row
   const kpiW=(cw-9)/4;
-  const kpis=[
-    {label:'Teilnehmer',val:R.length,sub:'Antworten'},
-    {label:'Ø Gesamt',val:ovAvg,sub:'von 10'},
-    {label:'Stärke',val:S[sorted[0].i].l.split(' ')[0],sub:'Bester Bereich'},
-    {label:'Fokus',val:S[sorted[sorted.length-1].i].l.split(' ')[0],sub:'Handlungsbedarf'}
-  ];
-  kpis.forEach((k,i)=>{
+  [{label:'Teilnehmer',val:R.length,sub:'Antworten'},{label:'Ø Gesamt',val:ovAvg,sub:'von 10'},{label:'Stärke',val:S[sorted[0].i].l.split('(')[0].trim().split(' ')[0],sub:'Bester Bereich'},{label:'Fokus',val:S[sorted[sorted.length-1].i].l.split('(')[0].trim().split(' ')[0],sub:'Handlungsbedarf'}].forEach((k,i)=>{
     const x=ml+i*(kpiW+3);
-    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.3);
-    doc.roundedRect(x,y,kpiW,22,2,2,'FD');
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(k.label.toUpperCase(),x+4,y+6);
-    setFont(typeof k.val==='number'?14:9,'bold'); setTxt(C.forest);
-    doc.text(String(k.val),x+4,y+15);
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(k.sub,x+4,y+20);
+    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.3); doc.roundedRect(x,y,kpiW,22,2,2,'FD');
+    setFont(7,'normal'); setTxt(C.t3); doc.text(k.label.toUpperCase(),x+4,y+6);
+    setFont(typeof k.val==='number'?14:9,'bold'); setTxt(C.forest); doc.text(String(k.val),x+4,y+15);
+    setFont(7,'normal'); setTxt(C.t3); doc.text(k.sub,x+4,y+20);
   });
   y+=30;
 
-  // Section scores
-  setFont(10,'bold'); setTxt(C.forest);
-  doc.text('BEWERTUNG JE BEREICH',ml,y); y+=6;
-
+  setFont(10,'bold'); setTxt(C.forest); doc.text('BEWERTUNG JE BEREICH',ml,y); y+=6;
   S.forEach((s,i)=>{
-    const scoreVal=avgs[i];
-    const barMax=cw-50;
-    const barFill=(scoreVal/10)*barMax;
-    const scoreCol=scoreVal>=8?[83,160,83]:scoreVal>=6?[107,148,80]:scoreVal>=4?[196,154,60]:[180,80,60];
-
-    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.2);
-    doc.roundedRect(ml,y,cw,14,2,2,'FD');
-
-    // Left colour accent
-    setFill(C.scores[i]); doc.roundedRect(ml,y,3,14,1,1,'F');
-
-    // Section name
-    setFont(8,'bold'); setTxt(C.text);
-    doc.text(s.l,ml+7,y+5.5);
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(s.s,ml+7,y+10);
-
-    // Bar background
-    const bx=ml+72, by=y+4, bh=5;
-    setFill([226,221,212]); doc.roundedRect(bx,by,barMax,bh,1,1,'F');
-
-    // Bar fill with gradient effect
-    setFill(scoreCol); doc.roundedRect(bx,by,barFill,bh,1,1,'F');
-
-    // Score badge
+    const scoreVal=avgs[i],barMax=cw-50,barFill=(scoreVal/10)*barMax;
+    const sc=s.c.replace('#','');
+    const rgb=[parseInt(sc.slice(0,2),16),parseInt(sc.slice(2,4),16),parseInt(sc.slice(4,6),16)];
+    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.2); doc.roundedRect(ml,y,cw,14,2,2,'FD');
+    doc.setFillColor(rgb[0],rgb[1],rgb[2]); doc.roundedRect(ml,y,3,14,1,1,'F');
+    setFont(8,'bold'); setTxt(C.text); doc.text(s.l,ml+7,y+5.5);
+    setFont(7,'normal'); setTxt(C.t3); doc.text(s.s,ml+7,y+10);
+    setFill([226,221,212]); doc.roundedRect(ml+80,y+4,barMax,5,1,1,'F');
+    doc.setFillColor(rgb[0],rgb[1],rgb[2]); doc.roundedRect(ml+80,y+4,barFill,5,1,1,'F');
     const badgeX=ml+cw-14;
-    setFill(scoreCol); doc.roundedRect(badgeX,y+3,12,8,2,2,'F');
-    setFont(9,'bold'); setTxt(C.white);
-    doc.text(scoreVal.toFixed(1),badgeX+6,y+8.5,'center');
-
+    doc.setFillColor(rgb[0],rgb[1],rgb[2]); doc.roundedRect(badgeX,y+3,12,8,2,2,'F');
+    setFont(9,'bold'); setTxt(C.white); doc.text(scoreVal.toFixed(1),badgeX+6,y+8.5,'center');
     y+=18;
   });
 
-  y+=6;
-
-  // Overall score visual
+  y+=4;
   setFill(C.forest); doc.roundedRect(ml,y,cw,24,3,3,'F');
-  setFont(8,'normal'); setTxt(C.sage);
-  doc.text('GESAMTDURCHSCHNITT',ml+8,y+8);
-  setFont(20,'bold'); setTxt(C.white);
-  doc.text(ovAvg.toFixed(1),ml+8,y+20);
-  setFont(9,'normal'); setTxt(C.sage);
-  doc.text('/ 10',ml+22,y+20);
+  setFont(8,'normal'); setTxt(C.sage); doc.text('GESAMTDURCHSCHNITT',ml+8,y+8);
+  setFont(20,'bold'); setTxt(C.white); doc.text(ovAvg.toFixed(1),ml+8,y+20);
+  setFont(9,'normal'); setTxt(C.sage); doc.text('/ 10',ml+24,y+20);
   const sent=ovAvg>=7?'Sehr positiv':ovAvg>=5?'Überwiegend positiv':'Gemischt';
-  setFont(8,'normal'); setTxt(C.mist);
-  doc.text(sent,ml+40,y+16);
-  const prog=(ovAvg/10)*(cw-60);
-  setFill([61,97,66]); doc.roundedRect(ml+40,y+19,cw-58,3,1,1,'F');
-  setFill(C.sage); doc.roundedRect(ml+40,y+19,prog,3,1,1,'F');
+  setFont(8,'normal'); setTxt(C.mist); doc.text(sent,ml+42,y+16);
   y+=32;
 
-  /* ── PAGE 2: DETAILANALYSE ── */
-  doc.addPage();
-  y=mt+14;
-
-  // Page header
+  // Page 2: detail
+  doc.addPage(); y=22;
   setFill(C.forest); doc.rect(0,0,pw,14,'F');
-  setFont(8,'normal'); setTxt(C.sage);
-  doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
-  setTxt([163,196,168]);
-  doc.text('Detailanalyse',pw-mr,9,'right');
-  y=22;
-
-  setFont(13,'bold'); setTxt(C.forest);
-  doc.text('Detailanalyse je Bereich',ml,y); y+=10;
+  setFont(8,'normal'); setTxt(C.sage); doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
+  setTxt([163,196,168]); doc.text('Detailanalyse',pw-mr,9,'right');
+  setFont(13,'bold'); setTxt(C.forest); doc.text('Detailanalyse je Bereich',ml,y); y+=10;
 
   S.forEach((s,i)=>{
-    // Check page break
     if(y>240){doc.addPage();y=22;setFill(C.forest);doc.rect(0,0,pw,14,'F');setFont(8,'normal');setTxt(C.sage);doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);y=22;}
-
-    // Section header
-    setFill(C.scores[i]); doc.roundedRect(ml,y,cw,10,2,2,'F');
-    setFont(9,'bold'); setTxt(C.white);
-    doc.text(`0${i+1}  ${s.l}`,ml+4,y+6.5);
-    const scoreVal=avgs[i];
-    doc.text(`Ø ${scoreVal.toFixed(1)} / 10`,ml+cw-4,y+6.5,'right');
+    const sc=s.c.replace('#','');
+    const rgb=[parseInt(sc.slice(0,2),16),parseInt(sc.slice(2,4),16),parseInt(sc.slice(4,6),16)];
+    doc.setFillColor(rgb[0],rgb[1],rgb[2]); doc.roundedRect(ml,y,cw,10,2,2,'F');
+    setFont(9,'bold'); setTxt(C.white); doc.text(`0${i+1}  ${s.l}`,ml+4,y+6.5);
+    doc.text(`Ø ${avgs[i].toFixed(1)} / 10`,ml+cw-4,y+6.5,'right');
     y+=14;
-
-    // Score distribution for this section
-    const vals=R.map(r=>r.scores[i]);
-    const mn=Math.min(...vals),mx=Math.max(...vals);
-
-    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.2);
-    doc.roundedRect(ml,y,cw,8,1,1,'FD');
-    setFont(7,'normal'); setTxt(C.t3);
-    doc.text(`Min: ${mn}`,ml+4,y+5);
-    doc.text(`Ø: ${scoreVal.toFixed(1)}`,ml+30,y+5);
-    doc.text(`Max: ${mx}`,ml+58,y+5);
-    doc.text(`${R.length} Stimmen`,ml+cw-4,y+5,'right');
-
-    // Mini score bar
-    const mbx=ml+85,mby=y+2.5,mbw=50,mbh=3;
-    setFill([226,221,212]); doc.roundedRect(mbx,mby,mbw,mbh,1,1,'F');
-    const scoreCol2=scoreVal>=8?[83,160,83]:scoreVal>=6?[107,148,80]:scoreVal>=4?[196,154,60]:[180,80,60];
-    setFill(scoreCol2); doc.roundedRect(mbx,mby,(scoreVal/10)*mbw,mbh,1,1,'F');
+    const vals=R.map(r=>r.scores[i]),mn=Math.min(...vals),mx=Math.max(...vals);
+    setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.2); doc.roundedRect(ml,y,cw,8,1,1,'FD');
+    setFont(7,'normal'); setTxt(C.t3); doc.text(`Min: ${mn}`,ml+4,y+5); doc.text(`Ø: ${avgs[i].toFixed(1)}`,ml+28,y+5); doc.text(`Max: ${mx}`,ml+56,y+5); doc.text(`${R.length} Stimmen`,ml+cw-4,y+5,'right');
     y+=12;
-
-    // Interpretation
-    const interpText=scoreVal>=8?`${s.l} erzielt mit ${scoreVal.toFixed(1)} einen starken Durchschnitt. Dieser Bereich kann offensiv kommuniziert werden.`:
-      scoreVal>=6?`${s.l} wird mit ${scoreVal.toFixed(1)} solide bewertet. Gezielte Maßnahmen können diesen Bereich zur Stärke entwickeln.`:
-      scoreVal>=4?`${s.l} zeigt mit ${scoreVal.toFixed(1)} ein gemischtes Bild. Die qualitativen Antworten enthalten konkrete Hinweise.`:
-      `${s.l} signalisiert mit ${scoreVal.toFixed(1)} Handlungsbedarf. Kommentare sollten systematisch ausgewertet werden.`;
-
+    const interpText=avgs[i]>=8?`${s.l} erzielt einen starken Durchschnitt von ${avgs[i].toFixed(1)}. Offensiv kommunizieren.`:avgs[i]>=6?`${s.l} wird mit ${avgs[i].toFixed(1)} solide bewertet. Gezielte Maßnahmen stärken diesen Bereich.`:avgs[i]>=4?`${s.l} zeigt ein gemischtes Bild (${avgs[i].toFixed(1)}). Qualitative Antworten enthalten konkrete Hinweise.`:`${s.l} signalisiert dringenden Handlungsbedarf (${avgs[i].toFixed(1)}).`;
     setFont(7.5,'normal'); setTxt(C.t2);
-    const lines=doc.splitTextToSize(interpText,cw-4);
-    doc.text(lines,ml+2,y);
-    y+=lines.length*4.5+4;
-
-    // Responses
-    setFont(7.5,'bold'); setTxt(C.t3);
-    doc.text('TEILNEHMER-ANTWORTEN',ml,y); y+=4;
-
+    const lines=doc.splitTextToSize(interpText,cw-4); doc.text(lines,ml+2,y); y+=lines.length*4.5+4;
+    setFont(7.5,'bold'); setTxt(C.t3); doc.text('TEILNEHMER-ANTWORTEN',ml,y); y+=4;
     R.forEach((r,ri)=>{
       if(y>265){doc.addPage();y=22;setFill(C.forest);doc.rect(0,0,pw,14,'F');setFont(8,'normal');setTxt(C.sage);doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);y=22;}
-      const scoreC=r.scores[i]>=8?[83,160,83]:r.scores[i]>=6?[107,148,80]:r.scores[i]>=4?[196,154,60]:[180,80,60];
       const rowBg=ri%2===0?[250,248,244]:[244,241,235];
-      const txt=r.texts[i];
-      const wrappedLines=doc.splitTextToSize(txt,cw-28);
-      const rowH=Math.max(10,wrappedLines.length*4+6);
-      setFill(rowBg); setDraw(C.mist); doc.setLineWidth(0.1);
-      doc.roundedRect(ml,y,cw,rowH,1,1,'FD');
-      // Score badge
-      setFill(scoreC); doc.roundedRect(ml+1,y+1,10,rowH-2,1,1,'F');
-      setFont(7.5,'bold'); setTxt(C.white);
-      doc.text(String(r.scores[i]),ml+6,y+rowH/2+1,'center');
-      // Text
-      setFont(7,'normal'); setTxt(C.t2);
-      doc.text(wrappedLines,ml+14,y+4.5);
-      // Timestamp
-      setFont(6,'normal'); setTxt(C.t3);
-      doc.text(r.ts,ml+cw-2,y+rowH-2,'right');
+      const txt=r.texts[i]; const wrappedLines=doc.splitTextToSize(txt,cw-28); const rowH=Math.max(10,wrappedLines.length*4+6);
+      setFill(rowBg); setDraw(C.mist); doc.setLineWidth(0.1); doc.roundedRect(ml,y,cw,rowH,1,1,'FD');
+      doc.setFillColor(rgb[0],rgb[1],rgb[2]); doc.roundedRect(ml+1,y+1,10,rowH-2,1,1,'F');
+      setFont(7.5,'bold'); setTxt(C.white); doc.text(String(r.scores[i]),ml+6,y+rowH/2+1,'center');
+      setFont(7,'normal'); setTxt(C.t2); doc.text(wrappedLines,ml+14,y+4.5);
+      setFont(6,'normal'); setTxt(C.t3); doc.text(r.ts,ml+cw-2,y+rowH-2,'right');
       y+=rowH+1;
     });
     y+=8;
   });
 
-  /* ── PAGE 3: FAZIT ── */
+  // Page 3: Fazit
   doc.addPage();
   setFill(C.forest); doc.rect(0,0,pw,14,'F');
-  setFont(8,'normal'); setTxt(C.sage);
-  doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
-  setTxt([163,196,168]);
-  doc.text('Gesamtfazit',pw-mr,9,'right');
+  setFont(8,'normal'); setTxt(C.sage); doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
+  setTxt([163,196,168]); doc.text('Gesamtfazit',pw-mr,9,'right');
   y=24;
-
-  setFont(14,'bold'); setTxt(C.forest);
-  doc.text('Gesamtfazit — Nachhaltiges Bauen',ml,y); y+=5;
-  setFont(8,'normal'); setTxt(C.t3);
-  doc.text(`Zirkularität Summit 2026  ·  ${R.length} Teilnehmer  ·  ${today}`,ml,y); y+=12;
-
-  // Ranked sections
-  setFont(9,'bold'); setTxt(C.forest);
-  doc.text('BEREICHE NACH BEWERTUNG',ml,y); y+=7;
-
-  const rankLabels=['Stärke','Potenzial','Aufmerksamkeit','Priorität'];
-  const rankColors=[C.forest,C.moss,[155,107,74],[196,154,60]];
+  setFont(14,'bold'); setTxt(C.forest); doc.text('Gesamtfazit — Nachhaltiges Bauen',ml,y); y+=5;
+  setFont(8,'normal'); setTxt(C.t3); doc.text(`Zirkularität Summit 2026  ·  ${R.length} Teilnehmer  ·  ${today}`,ml,y); y+=12;
+  setFont(9,'bold'); setTxt(C.forest); doc.text('BEREICHE NACH BEWERTUNG',ml,y); y+=7;
+  const rankLabels=['Stärke','Potenzial','Aufmerksamkeit','Fokus','Reserve','Priorität'];
   sorted.forEach((x,rank)=>{
-    const s=S[x.i];
-    setFill(rankColors[rank]); doc.roundedRect(ml,y,cw,15,2,2,'F');
-    setFont(7,'bold'); setTxt([163,196,168]);
-    doc.text(`${rank+1}. ${rankLabels[rank].toUpperCase()}`,ml+5,y+5.5);
-    setFont(10,'bold'); setTxt(C.white);
-    doc.text(s.l,ml+5,y+12);
-    setFont(12,'bold'); setTxt([212,230,214]);
-    doc.text(`${x.a.toFixed(1)}`,ml+cw-5,y+11,'right');
-    y+=19;
+    const s=S[x.i], sc2=s.c.replace('#','');
+    const rgb2=[parseInt(sc2.slice(0,2),16),parseInt(sc2.slice(2,4),16),parseInt(sc2.slice(4,6),16)];
+    doc.setFillColor(rgb2[0],rgb2[1],rgb2[2]); doc.roundedRect(ml,y,cw,12,2,2,'F');
+    setFont(7,'bold'); setTxt([163,196,168]); doc.text(`${rank+1}. ${rankLabels[rank].toUpperCase()}`,ml+5,y+4.5);
+    setFont(9,'bold'); setTxt(C.white); doc.text(s.l,ml+5,y+10);
+    doc.text(`${x.a.toFixed(1)}`,ml+cw-5,y+9,'right'); y+=16;
   });
-
   y+=4;
-
-  // Summary conclusion box
-  setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.3);
-  doc.roundedRect(ml,y,cw,46,3,3,'FD');
-  setFill(C.moss); doc.roundedRect(ml,y,3,46,1,1,'F');
-  setFont(8,'bold'); setTxt(C.forest);
-  doc.text('ZUSAMMENFASSUNG',ml+8,y+8);
-  const conclusionText=`Die ${R.length} Teilnehmer des Zirkularität Summit 2026 bewerten das Thema insgesamt ${sent.toLowerCase()} (Ø ${ovAvg.toFixed(1)}/10). Stärkstes Handlungsfeld ist ${S[sorted[0].i].l} — hier besteht die größte Zustimmung und Kommunikationschance. Den höchsten Handlungsbedarf signalisiert ${S[sorted[sorted.length-1].i].l}. Die qualitativen Rückmeldungen der Teilnehmer enthalten konkrete Impulse für die nächste Planungsrunde des Teams Nachhaltiges Bauen.`;
+  setFill(C.bg); setDraw(C.mist); doc.setLineWidth(0.3); doc.roundedRect(ml,y,cw,36,3,3,'FD');
+  setFill(C.moss); doc.roundedRect(ml,y,3,36,1,1,'F');
+  setFont(8,'bold'); setTxt(C.forest); doc.text('ZUSAMMENFASSUNG',ml+8,y+8);
+  const conclusionText=`Die ${R.length} Teilnehmer bewerten das Thema insgesamt ${sent.toLowerCase()} (Ø ${ovAvg.toFixed(1)}/10). Stärkstes Handlungsfeld: ${S[sorted[0].i].l}. Höchster Handlungsbedarf: ${S[sorted[sorted.length-1].i].l}.`;
   setFont(8,'normal'); setTxt(C.t2);
-  const cLines=doc.splitTextToSize(conclusionText,cw-14);
-  doc.text(cLines,ml+8,y+16);
-  y+=52;
+  const cLines=doc.splitTextToSize(conclusionText,cw-14); doc.text(cLines,ml+8,y+16); y+=42;
 
-  // Footer on all pages
+  // Footer
   const totalPages=doc.getNumberOfPages();
   for(let p=1;p<=totalPages;p++){
     doc.setPage(p);
     setFill(C.bg); doc.rect(0,ph-12,pw,12,'F');
-    setDraw(C.mist); doc.setLineWidth(0.3);
-    doc.line(ml,ph-12,pw-mr,ph-12);
+    setDraw(C.mist); doc.setLineWidth(0.3); doc.line(ml,ph-12,pw-mr,ph-12);
     setFont(7,'normal'); setTxt(C.t3);
     doc.text('🌿 Zirkularität Summit 2026 — Lindner · Nachhaltiges Bauen · Vertraulich',ml,ph-5);
     doc.text(`Seite ${p} / ${totalPages}`,pw-mr,ph-5,'right');
   }
-
   doc.save(`Zirkularitaet_Summit_2026_Bericht_${new Date().toISOString().slice(0,10)}.pdf`);
 }
+
+/* ══ INIT ══ */
+(function init(){
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('view')==='survey') { sv('view-welcome'); }
+  else { sv('view-admin-home'); initQR(); }
+})();
 </script>
 </body>
 </html>
