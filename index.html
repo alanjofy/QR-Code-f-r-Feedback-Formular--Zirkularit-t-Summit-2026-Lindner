@@ -458,7 +458,8 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
         <div class="sc-score-badge" style="border-color:#537a58"><span class="sc-score-n" id="r0" style="color:#537a58">5</span></div>
       </div>
       <div class="sc-body">
-        <div class="q-text">Wo stehen wir in zwei und zehn Jahren? (Prozentualer Anteil zirkular am Umsatz) (je Geschäftsbereich)</div>
+        <!-- ✏️ CHANGED: new question text for Zeit -->
+        <div class="q-text">Wie realistisch ist ein Wachstum von Zirkulären Marktanteilen in den nächsten 10 Jahren?</div>
         <textarea id="t0" placeholder="Deine Einschätzung…" oninput="inp(0)"></textarea>
         <div id="terr0" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
@@ -500,11 +501,12 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
         <div class="sc-score-badge" style="border-color:#9b6b4a"><span class="sc-score-n" id="r2" style="color:#9b6b4a">5</span></div>
       </div>
       <div class="sc-body">
-        <div class="q-text">Welche Anreizmodelle könnten die Wirtschaftlichkeit für sowohl Lindner als auch die Endkunden steigern?</div>
+        <!-- ✏️ CHANGED: new question text for Wirtschaftlichkeit -->
+        <div class="q-text">Was kann die Wirtschaftlichkeit für sowohl Lindner als auch für die Endkunden steigern?</div>
         <textarea id="t2" placeholder="Deine Einschätzung…" oninput="inp(2)"></textarea>
         <div id="terr2" style="display:none;font-size:11px;color:#c8503a;margin-top:-8px;margin-bottom:8px;letter-spacing:.02em">⚠ Bitte fülle dieses Feld aus.</div>
         <div class="sep"></div>
-        <div class="sldr-label">Auf einer Skala von 1–10: Wie hoch schätzt du das wirtschaftliche Potenzial zirkulärer Anreizmodelle ein?</div>
+        <div class="sldr-label">Auf einer Skala von 1–10: Wie hoch schätzt du das wirtschaftliche Potenzial ein?</div>
         <div class="sldr-row"><input type="range" min="1" max="10" value="5" step="1" id="s2" oninput="sl(2,this.value)" style="accent-color:#9b6b4a"><span class="sldr-val" id="v2" style="color:#9b6b4a">5</span></div>
         <div class="sldr-ends"><span>Gering</span><span>Sehr hoch</span></div>
       </div>
@@ -698,8 +700,6 @@ async function submitSurvey() {
   }
   const btn = document.getElementById('submit-btn');
   btn.disabled = true; btn.textContent = 'Wird gespeichert…';
-  // DB columns: score_zeit, score_image, score_wirtschaftlichkeit, score_oekologie, score_technik, score_markt
-  // and text_ equivalents
   const keys = ['zeit','image','wirtschaftlichkeit','oekologie','technik','markt'];
   const row = {};
   keys.forEach((k,i) => {
@@ -828,7 +828,6 @@ function rStatistik(avgs,n,R) {
   document.getElementById('stat-content').style.display = 'block';
   document.getElementById('dc-tot').textContent = avg(avgs).toFixed(1);
 
-  // Donut
   const dc = document.getElementById('donut-canvas').getContext('2d');
   const tot = avgs.reduce((a,b)=>a+b,0); dc.clearRect(0,0,200,200);
   let ang = -Math.PI/2;
@@ -836,7 +835,6 @@ function rStatistik(avgs,n,R) {
   dc.beginPath(); dc.arc(100,100,58,0,Math.PI*2); dc.fillStyle='#fff'; dc.fill();
   document.getElementById('donut-legend').innerHTML = S.map((s,i)=>`<div class="dl-row"><div class="dl-dot" style="background:${s.c}"></div><span class="dl-label">${s.l}</span><span class="dl-val">${avgs[i].toFixed(1)}</span></div>`).join('');
 
-  // Radar (hexagon for 6 sections)
   const rc = document.getElementById('radar-canvas').getContext('2d'); rc.clearRect(0,0,240,240);
   const rcx=120, rcy=120, maxR=85;
   const a6 = [0,1,2,3,4,5].map(i => -Math.PI/2 + (i/6)*Math.PI*2);
@@ -854,7 +852,6 @@ function rStatistik(avgs,n,R) {
   rc.closePath(); rc.fillStyle='rgba(83,122,88,.18)'; rc.fill(); rc.strokeStyle='#537a58'; rc.lineWidth=2; rc.stroke();
   a6.forEach((a,i)=>{ const r=(avgs[i]/10)*maxR,x=rcx+r*Math.cos(a),y=rcy+r*Math.sin(a); rc.beginPath(); rc.arc(x,y,4,0,Math.PI*2); rc.fillStyle=S[i].c; rc.fill(); const lx=rcx+(maxR+18)*Math.cos(a),ly=rcy+(maxR+18)*Math.sin(a); rc.fillStyle='#5a5548'; rc.font='9px Outfit,sans-serif'; rc.textAlign=lx<rcx-5?'right':lx>rcx+5?'left':'center'; rc.fillText(lbs[i],lx,ly+3); });
 
-  // Histogram
   const hc = document.getElementById('hist-canvas'), ctx = hc.getContext('2d');
   const dw = hc.offsetWidth||700; hc.width=dw*devicePixelRatio; hc.height=140*devicePixelRatio; ctx.scale(devicePixelRatio,devicePixelRatio); ctx.clearRect(0,0,dw,140);
   const freq = Array(10).fill(0); R.forEach(r=>r.scores.forEach(s=>freq[s-1]++));
@@ -862,7 +859,6 @@ function rStatistik(avgs,n,R) {
   for(let i=0;i<10;i++){const x=pad.l+i*colW+gp/2,bH=(freq[i]/mxF)*cH,y=pad.t+cH-bH; ctx.fillStyle='rgba(83,122,88,.72)'; ctx.beginPath(); const rr=3; ctx.moveTo(x+rr,y); ctx.lineTo(x+bw-rr,y); ctx.quadraticCurveTo(x+bw,y,x+bw,y+rr); ctx.lineTo(x+bw,y+bH); ctx.lineTo(x,y+bH); ctx.lineTo(x,y+rr); ctx.quadraticCurveTo(x,y,x+rr,y); ctx.closePath(); ctx.fill(); if(freq[i]>0){ctx.fillStyle='#537a58';ctx.font='500 10px Outfit,sans-serif';ctx.textAlign='center';ctx.fillText(freq[i],x+bw/2,y-4);} ctx.fillStyle='#9a9080'; ctx.font='10px Outfit,sans-serif'; ctx.textAlign='center'; ctx.fillText(i+1,x+bw/2,140-pad.b+13);}
   ctx.beginPath(); ctx.moveTo(pad.l,pad.t+cH); ctx.lineTo(dw-pad.r,pad.t+cH); ctx.strokeStyle='rgba(28,26,22,.1)'; ctx.lineWidth=1; ctx.stroke();
 
-  // Spread bars
   document.getElementById('spread-bars').innerHTML = S.map((s,i)=>{
     const vals=R.map(r=>r.scores[i]),mn=Math.min(...vals),mx=Math.max(...vals),av=avgs[i];
     return `<div class="spread-row"><div class="spread-meta"><span class="spread-name">${s.l}</span><span class="spread-nums">Min ${mn} · Ø ${av.toFixed(1)} · Max ${mx}</span></div><div class="spread-track"><div class="spread-range" style="left:${((mn-1)/9)*100}%;width:${((mx-mn)/9)*100}%;background:${s.c}"></div><div class="spread-avg-line" style="left:${((av-1)/9)*100}%;background:${s.c}"></div></div></div>`;
@@ -920,7 +916,6 @@ function exportPDF() {
   const sorted=[...avgs.map((a,i)=>({a,i}))].sort((x,y)=>y.a-x.a);
   const today=new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
 
-  // Cover
   setFill(C.forest); doc.rect(0,0,pw,80,'F');
   setFill([61,97,66]); doc.circle(180,10,40,'F');
   setFill([46,74,46]); doc.circle(185,12,28,'F');
@@ -932,7 +927,6 @@ function exportPDF() {
   setFont(9,'normal'); setTxt([163,196,168]); doc.text(`Erstellt am ${today}  ·  ${R.length} Teilnehmer`,ml,71);
   y=92;
 
-  // KPI row
   const kpiW=(cw-9)/4;
   [{label:'Teilnehmer',val:R.length,sub:'Antworten'},{label:'Ø Gesamt',val:ovAvg,sub:'von 10'},{label:'Stärke',val:S[sorted[0].i].l.split('(')[0].trim().split(' ')[0],sub:'Bester Bereich'},{label:'Fokus',val:S[sorted[sorted.length-1].i].l.split('(')[0].trim().split(' ')[0],sub:'Handlungsbedarf'}].forEach((k,i)=>{
     const x=ml+i*(kpiW+3);
@@ -969,7 +963,6 @@ function exportPDF() {
   setFont(8,'normal'); setTxt(C.mist); doc.text(sent,ml+42,y+16);
   y+=32;
 
-  // Page 2: detail
   doc.addPage(); y=22;
   setFill(C.forest); doc.rect(0,0,pw,14,'F');
   setFont(8,'normal'); setTxt(C.sage); doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
@@ -1006,7 +999,6 @@ function exportPDF() {
     y+=8;
   });
 
-  // Page 3: Fazit
   doc.addPage();
   setFill(C.forest); doc.rect(0,0,pw,14,'F');
   setFont(8,'normal'); setTxt(C.sage); doc.text('🌿 Zirkularität Summit 2026 — Lindner',ml,9);
@@ -1032,7 +1024,6 @@ function exportPDF() {
   setFont(8,'normal'); setTxt(C.t2);
   const cLines=doc.splitTextToSize(conclusionText,cw-14); doc.text(cLines,ml+8,y+16); y+=42;
 
-  // Footer
   const totalPages=doc.getNumberOfPages();
   for(let p=1;p<=totalPages;p++){
     doc.setPage(p);
